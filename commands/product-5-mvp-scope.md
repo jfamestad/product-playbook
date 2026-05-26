@@ -90,14 +90,14 @@ If you spot the anti-pattern, reorganize. The MVP must ship the slice that deliv
 
 ## Step 6 — Path-to-vision sanity check
 
-A quick pass (deeper architectural work happens in `/product-9-access-patterns` and `/product-10-data-model`). For each major scoping choice in the IN list:
+A quick pass (deeper architectural work happens in `/product-10-access-patterns` and `/product-11-data-model`). For each major scoping choice in the IN list:
 
 - Does adding deferred feature X later require a rewrite, or is it purely additive?
 - Are there data-model, integration, or auth choices that would make later features painful?
 
 You don't need to solve the architectural problem here — just **flag** the corner-painting risks so they get explicit attention in the architecture phases. Capture a short "watch-out" list:
 
-> Example: "MVP uses single-tenant data; multi-tenant will require migration. Flagged for /product-10-data-model."
+> Example: "MVP uses single-tenant data; multi-tenant will require migration. Flagged for /product-11-data-model."
 
 If no corner-painting risks are visible, write that explicitly. Don't manufacture risks for completeness.
 
@@ -297,6 +297,6 @@ Close with:
 > Next:
 > - `/product-6-roles` — define solution roles, user groups, and permissions before the stress test.
 > - `/product-7-stress-test ./artifacts/mvp-scope.md` — **strongly recommended.** This is one of the two natural antagonist gates in the playbook. POV lineup: Sponsor, Technical, Operator, Customer. The cheapest place to find a scope-shaped flaw is right now.
-> - Then `/product-8-engineering-handoff` to package the scope for build.
+> - Then `/product-9-engineering-handoff` to package the scope for build.
 
 Recommend the stress-test always at this gate. Mention if any of these are true in the just-written scope: more than N IN items, fuzzy OUT triggers, missing assumption-under-test mapping, or vague success/kill criteria.

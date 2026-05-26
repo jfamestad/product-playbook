@@ -1,11 +1,11 @@
 ---
 name: playbook
-description: Use when taking a product from "I think there's something here" to a buildable backlog. 12 commands (Phase 0–12) covering durable principles + toolchain + tech stack, PRFAQ with named first-three customers, GTM plan, design direction (via Claude Design), MVP scope with numbers, roles and tenancy and permissions, access-pattern-first data model, 13-question pre-build Q&A, and a buildable backlog with optional push to your team's issue tracker. Calls the `tear-it-apart` antagonist at the PRFAQ gate and the MVP-scope gate. Triggers on "new product idea", "PRFAQ", "MVP scope", "buildable backlog", "first paying customer", "product playbook", "playbook".
+description: Use when taking a product from "I think there's something here" to a buildable backlog. 13 commands (Phase 0–13) covering durable principles + toolchain + tech stack, PRFAQ with named first-three customers, GTM plan, design direction (via Claude Design), MVP scope with numbers, roles and tenancy and permissions, multi-POV stress test, explicit go/no-go commitment, product requirements, access-pattern-first data model, 13-question pre-build Q&A, and a buildable backlog with optional push to your team's issue tracker. Calls the `tear-it-apart` antagonist at the PRFAQ gate and the MVP-scope gate. Triggers on "new product idea", "PRFAQ", "MVP scope", "buildable backlog", "go no go", "first paying customer", "product playbook", "playbook".
 ---
 
 # Product Playbook
 
-Take a product idea from "I think there's something here" to a buildable backlog. 12 numbered slash commands (Phase 0 through Phase 12) plus a read-only `/product-status` utility. Each phase produces a concrete **artifact** that unlocks the next phase. Skip nothing — weak upstream artifacts cause drift downstream.
+Take a product idea from "I think there's something here" to a buildable backlog. 13 numbered slash commands (Phase 0 through Phase 13) plus a read-only `/product-status` utility. Each phase produces a concrete **artifact** that unlocks the next phase. Skip nothing — weak upstream artifacts cause drift downstream.
 
 Full long-form reference: `references/full-playbook.md`. Read it once per product if this is your first run.
 
@@ -39,7 +39,7 @@ This convention applies to every artifact-writing command. Don't build separate 
 
 **Existing artifacts.** Before overwriting, infer from the user's request whether they want to continue iterating an existing file or start fresh. Ask only if intent is genuinely unclear. Never silently overwrite.
 
-## The 12 Phases
+## The 13 Phases
 
 ### Phase 0 — `/product-0-intro` — Orient
 Walks the user through what the playbook is, the 12 phases, the 5 principles, and how the commands work. **Writes no artifact.** Only orients.
@@ -66,24 +66,27 @@ Decide what is *in* v0.1 and what is out. Force a number on every dimension (bud
 **Gate — run `/product-7-stress-test ./artifacts/mvp-scope.md`.** POV lineup: Sponsor, Technical, Operator, Customer. Output: scope is signed off, or specific cuts/additions are identified before moving on.
 
 ### Phase 6 — `/product-6-roles` — Roles, tenancy, permissions, operational features
-Four-area conversation framework: solution roles, tenancy model (single vs multi-tenant), permissions matrix, and operational features (admin views, audit logs, support tooling). Each area asks "in MVP or deferred?" Artifact: `./artifacts/roles.md`. Feeds `/product-9-access-patterns` (partitioning, permission queries) and `/product-10-data-model` (Tenant, User, Role, Audit-log entities).
+Four-area conversation framework: solution roles, tenancy model (single vs multi-tenant), permissions matrix, and operational features (admin views, audit logs, support tooling). Each area asks "in MVP or deferred?" Artifact: `./artifacts/roles.md`. Feeds `/product-10-access-patterns` (partitioning, permission queries) and `/product-11-data-model` (Tenant, User, Role, Audit-log entities).
 
 ### Phase 7 — `/product-7-stress-test` — Multi-POV antagonist (gate)
-Run `tear-it-apart` against any artifact. Two natural gates (PRFAQ, MVP-scope) plus ad-hoc on demand. Artifact: `./artifacts/stress-test-<artifact-name>.md` per run.
+Run `tear-it-apart` against any artifact. Two natural gates (PRFAQ, MVP-scope) plus ad-hoc on demand. Artifact: `./artifacts/stress-test-<artifact-name>.md` per run. Recommendation is Proceed / Proceed-with-changes / Pause / Kill — but it's a *vote*, not a *decision*. The decision happens in Phase 8.
 
-### Phase 8 — `/product-8-engineering-handoff` — Product requirements doc
+### Phase 8 — `/product-8-go-no-go` — Explicit commitment (gate)
+The conscious, dated, named-decider commitment to build (or pivot, or kill) — after the MVP-scope stress test and before engineering handoff. Four outcomes: **Go**, **Go with changes** (specific cuts/additions), **Pause** (named blocker + signal to resume + owner), **Kill** (what we learned, what was right, what's next). Locks pre-build commitments: time budget, money budget, scope-creep rule, in-build re-evaluation triggers, in-build kill triggers. Artifact: `./artifacts/go-no-go.md`. Required upstream by `/product-9-engineering-handoff` — engineering doesn't pick up requirements that haven't been formally committed to.
+
+### Phase 9 — `/product-9-engineering-handoff` — Product requirements doc
 Package everything resolved upstream (vision, GTM, design, scope, roles) into a single `./artifacts/product-requirements.md` that engineering can build from without re-deriving context. Feature tiers, critical path, cut order, business dependencies, glossary, open questions.
 
-### Phase 9 — `/product-9-access-patterns` — How the data will be queried
+### Phase 10 — `/product-10-access-patterns` — How the data will be queried
 Don't design tables. List the questions you need to ask the data, then design the table that answers them. Artifact: `./artifacts/access-patterns.md` listing every access pattern as a numbered row before any table layout. New access pattern later → add a row, check coverage. If no key serves it, that's real work — don't paper over.
 
-### Phase 10 — `/product-10-data-model` — Single-table design defended by access patterns
+### Phase 11 — `/product-11-data-model` — Single-table design defended by access patterns
 Translate the access-pattern list into a concrete single-table design (or equivalent). Artifact: `./artifacts/data-model.md`. Each design choice must trace back to an access pattern from Phase 9.
 
-### Phase 11 — `/product-11-prebuild-qa` — The 13 pre-build questions
+### Phase 12 — `/product-12-prebuild-qa` — The 13 pre-build questions
 13 questions a senior engineer / operator would ask before approving build start. Most are not pure-tech (those belong in Phases 9–10); these span product, ops, support, GTM, and engineering — sign-on, tenancy confirmation, pricing model, failure modes, testing strategy, naming conventions, email & comms, HITL (experience + risk lenses), pilot/beta deal scope, build sequence, repo organization, observability & on-call, customer-facing docs. Artifact: `./artifacts/prebuild-qa.md`. Every question gets an answer or an explicit defer-with-workaround.
 
-### Phase 12 — `/product-12-backlog` — Buildable backlog (local + optional tracker push)
+### Phase 13 — `/product-13-backlog` — Buildable backlog (local + optional tracker push)
 Decompose `product-requirements.md` into discrete work items. One markdown file per item under `./artifacts/backlog/` plus an `index.md`. Each item: bucket, size (S/M/L/XL), priority (P0/P1/P2), depends-on, acceptance criteria. Then — per the Toolchain integration convention — if `toolchain.md` names an issue tracker (GitHub / Jira / Linear / Asana) and its MCP is available, offer to push the items as additive sync. Local markdown remains canonical.
 
 ### `/product-status` — Read-only status check
@@ -146,7 +149,7 @@ Until those ship, treat them as out of scope — the playbook stops at "you can 
 
 ## Common Mistakes
 
-- **Designing tables before listing access patterns.** Always patterns first (`/product-9-access-patterns` before `/product-10-data-model`).
+- **Designing tables before listing access patterns.** Always patterns first (`/product-10-access-patterns` before `/product-11-data-model`).
 - **Skipping the PRFAQ because "we know what we're building".** You don't, until you write it.
 - **Naming first three customers as personas, not people.** They must be real names with real intro paths.
 - **Skipping the Phase 2 and Phase 5 antagonist gates.** Cheapest place in the whole sequence to find a fatal flaw; most expensive place to skip the check.

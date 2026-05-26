@@ -185,7 +185,7 @@ What this team uses today. Consulted by downstream commands when offering tool i
 - **CI/CD:** <value>
 
 ## Notes
-<Any caveats — e.g., "evaluating Linear vs Jira", "stack decisions pending /product-8-engineering-handoff">
+<Any caveats — e.g., "evaluating Linear vs Jira", "stack decisions pending /product-9-engineering-handoff">
 ```
 
 Confirm with the user before writing.

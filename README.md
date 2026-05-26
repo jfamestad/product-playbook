@@ -2,7 +2,7 @@
 
 A Claude Code plugin for taking a product idea from "I think there's something here" to first paying customer and beyond. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC.
 
-13 slash commands. Every phase produces a concrete artifact. If you don't have the artifact, the phase isn't done.
+14 slash commands across 13 phases (plus `/product-status`). Every phase produces a concrete artifact. If you don't have the artifact, the phase isn't done.
 
 ---
 
@@ -28,7 +28,7 @@ Once enabled, all `/product-*` commands appear in Claude Code. Skills auto-trigg
 
 ---
 
-## The 12 phases
+## The 13 phases
 
 | # | Command | What you walk out with |
 |---|---|---|
@@ -39,12 +39,13 @@ Once enabled, all `/product-*` commands appear in Claude Code. Skills auto-trigg
 | 4 | `/product-4-design` | `design-seed/` then `design/index.md` (via Claude Design) |
 | 5 | `/product-5-mvp-scope` | `mvp-scope.md` with defensible numbers |
 | 6 | `/product-6-roles` | `roles.md` — tenancy, permissions, operational features |
-| 7 | `/product-7-stress-test` | `stress-test-*.md` — multi-POV antagonist review |
-| 8 | `/product-8-engineering-handoff` | `product-requirements.md` |
-| 9 | `/product-9-access-patterns` | `access-patterns.md` |
-| 10 | `/product-10-data-model` | `data-model.md` (single-table design) |
-| 11 | `/product-11-prebuild-qa` | `prebuild-qa.md` — 13 questions answered |
-| 12 | `/product-12-backlog` | `backlog/` — one item per file + index, optional push to issue tracker |
+| 7 | `/product-7-stress-test` | `stress-test-*.md` — multi-POV antagonist review (vote, not decision) |
+| 8 | `/product-8-go-no-go` | `go-no-go.md` — explicit Go / Go-with-changes / Pause / Kill commitment with named decider |
+| 9 | `/product-9-engineering-handoff` | `product-requirements.md` |
+| 10 | `/product-10-access-patterns` | `access-patterns.md` |
+| 11 | `/product-11-data-model` | `data-model.md` (single-table design) |
+| 12 | `/product-12-prebuild-qa` | `prebuild-qa.md` — 13 questions answered |
+| 13 | `/product-13-backlog` | `backlog/` — one item per file + index, optional push to issue tracker |
 | — | `/product-status` | Read the log, see where you are. No artifact written |
 
 `/product-7-stress-test` is gated into the flow at two natural points (after `/product-2-vision` and after `/product-5-mvp-scope`) but can run ad-hoc on any artifact at any time.
@@ -65,11 +66,12 @@ Once enabled, all `/product-*` commands appear in Claude Code. Skills auto-trigg
 /product-5-mvp-scope   # IN/OUT with numbers
 /product-6-roles       # tenancy + permissions + operational features
 /product-7-stress-test ./artifacts/mvp-scope.md   # gate 2
-/product-8-engineering-handoff   # product-requirements.md
-/product-9-access-patterns       # questions you need to ask the data
-/product-10-data-model           # single-table design defended by patterns
-/product-11-prebuild-qa          # 13 pre-build questions
-/product-12-backlog              # buildable backlog → optional push to tracker
+/product-8-go-no-go              # explicit commitment — Go / Go-with-changes / Pause / Kill
+/product-9-engineering-handoff   # product-requirements.md
+/product-10-access-patterns       # questions you need to ask the data
+/product-11-data-model           # single-table design defended by patterns
+/product-12-prebuild-qa          # 13 pre-build questions
+/product-13-backlog              # buildable backlog → optional push to tracker
 ```
 
 ### Resuming a product already in flight
@@ -113,6 +115,7 @@ Every artifact lands under `./artifacts/` (relative to your current working dire
 ├── roles.md
 ├── stress-test-PRFAQ.md       # one per stress-test run
 ├── stress-test-mvp-scope.md
+├── go-no-go.md                # explicit commitment to build (or pause/kill)
 ├── product-requirements.md
 ├── access-patterns.md
 ├── data-model.md

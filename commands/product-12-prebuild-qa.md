@@ -2,9 +2,9 @@
 description: Answer the 13 pre-build questions before engineering starts. Each question forces an explicit MVP decision (or a documented "deferred + workaround") so nothing critical surfaces mid-build. Writes ./artifacts/prebuild-qa.md.
 ---
 
-# /product-11-prebuild-qa
+# /product-12-prebuild-qa
 
-You are walking the user through the 13 pre-build questions — the things that are cheap to decide *before* code starts and expensive to discover mid-build. Most are not technical-architecture decisions (those belong in `/product-9-access-patterns` and `/product-10-data-model`); these are the decisions that span product, ops, support, GTM, and engineering — the ones that fall through the cracks.
+You are walking the user through the 13 pre-build questions — the things that are cheap to decide *before* code starts and expensive to discover mid-build. Most are not technical-architecture decisions (those belong in `/product-10-access-patterns` and `/product-11-data-model`); these are the decisions that span product, ops, support, GTM, and engineering — the ones that fall through the cracks.
 
 The discipline: every question gets an answer or an explicit defer-with-workaround. "We'll figure it out" is not an answer.
 
@@ -196,7 +196,7 @@ Capture (per customer):
 - Agreement status (signed / drafted / verbal / nothing)
 
 ### Q10 — Build sequence
-*(Features + components in build order, with prioritization between them. Feeds `/product-12-backlog` ordering.)*
+*(Features + components in build order, with prioritization between them. Feeds `/product-13-backlog` ordering.)*
 
 Prompts:
 - Pull the P0 list from `product-requirements.md`. In what order do these get built?
@@ -452,7 +452,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-11-prebuild-qa — ./artifacts/prebuild-qa.md
+YYYY-MM-DD HH:MM PST — /product-12-prebuild-qa — ./artifacts/prebuild-qa.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -472,5 +472,5 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next:
-> - `/product-12-backlog` — turn the locked scope + answered pre-build questions into a buildable backlog as local markdown.
+> - `/product-13-backlog` — turn the locked scope + answered pre-build questions into a buildable backlog as local markdown.
 > - Or `/product-7-stress-test ./artifacts/prebuild-qa.md` if any answer felt soft — especially Q4 (failure modes), Q8 (HITL), Q9 (pilot commitments), or Q12 (observability). Operator + Customer + Devil's Advocate POVs are sharpest here.

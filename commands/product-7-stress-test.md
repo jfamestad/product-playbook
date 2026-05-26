@@ -272,7 +272,7 @@ Use the actual current local PST time. If unsure of the timezone, ask once and r
 Branch based on recommendation:
 
 - **Proceed:**
-  > Next: continue to the next playbook phase. If you just stress-tested PRFAQ → `/product-3-gtm`. If you just stress-tested MVP scope → `/product-8-engineering-handoff`.
+  > Next: continue to the next playbook phase. If you just stress-tested PRFAQ → `/product-3-gtm`. If you just stress-tested MVP scope → `/product-8-go-no-go` (the explicit commitment to build, before engineering handoff).
 
 - **Proceed with changes:**
   > Next: address the must-fix items in the block-and-tackle list. Re-run the upstream command(s) where needed (e.g., `/product-2-vision` if PRFAQ needs revision). Then continue.

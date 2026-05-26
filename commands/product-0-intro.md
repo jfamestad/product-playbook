@@ -7,7 +7,7 @@ description: Orient the user in the product-playbook process — phases, princip
 You are orienting a builder who is about to walk through the product-playbook process. They may be solo, may have a small team, may be working with an AI team. Your job is to leave them knowing:
 
 1. What the playbook is for
-2. The 12 phases and what each produces
+2. The 13 phases and what each produces
 3. The 5 principles that govern the work
 4. How to use the slash commands
 5. What to do next
@@ -30,7 +30,7 @@ Walk through these five sections in order. Be concise. The whole thing should fi
 
 A repeatable sequence for taking a product idea from "I think there's something here" to first paying customer and beyond. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC. Every phase produces a concrete artifact — if you don't have the artifact, the phase isn't done.
 
-### The 12 phases
+### The 13 phases
 
 | # | Command | What you walk out with |
 |---|---|---|
@@ -42,11 +42,12 @@ A repeatable sequence for taking a product idea from "I think there's something 
 | 5 | `/product-5-mvp-scope` | Defensible MVP scope with numbers |
 | 6 | `/product-6-roles` | Solution roles, user groups, permissions, operational features |
 | 7 | `/product-7-stress-test` | Multi-POV antagonist review of any prior artifact |
-| 8 | `/product-8-engineering-handoff` | Product requirements doc (`product-requirements.md`) for engineering |
-| 9 | `/product-9-access-patterns` | Access patterns that will drive the data model |
-| 10 | `/product-10-data-model` | Single-table design defended by access patterns |
-| 11 | `/product-11-prebuild-qa` | The 13 pre-build questions answered |
-| 12 | `/product-12-backlog` | Buildable backlog as local markdown — offers to push to your issue tracker if named |
+| 8 | `/product-8-go-no-go` | Explicit Go / Go-with-changes / Pause / Kill commitment with named decider |
+| 9 | `/product-9-engineering-handoff` | Product requirements doc (`product-requirements.md`) for engineering |
+| 10 | `/product-10-access-patterns` | Access patterns that will drive the data model |
+| 11 | `/product-11-data-model` | Single-table design defended by access patterns |
+| 12 | `/product-12-prebuild-qa` | The 13 pre-build questions answered |
+| 13 | `/product-13-backlog` | Buildable backlog as local markdown — offers to push to your issue tracker if named |
 | — | `/product-status` | Read the log; see where you are |
 
 `/product-7-stress-test` runs at two natural gates — after `/product-2-vision` (PRFAQ) and after `/product-5-mvp-scope`. It can also run ad-hoc on any artifact.

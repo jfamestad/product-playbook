@@ -2,7 +2,7 @@
 description: Enumerate every read pattern in the app, define the partitioning/tenancy model, identify security-related queries, and lock a cross-tenant access prevention plan. Writes ./artifacts/access-patterns.md.
 ---
 
-# /product-9-access-patterns
+# /product-10-access-patterns
 
 You are helping the user enumerate **every way the application will retrieve data**, before any data model is drawn. The data model in `/product-10` will be *defended by* access patterns — not aesthetics, not whatever schema feels clean. If a model doesn't serve a real access pattern, it doesn't belong.
 
@@ -38,7 +38,7 @@ Open with this orientation:
 Required upstream artifact:
 - `./artifacts/product-requirements.md` — the feature list and acceptance criteria. Every access pattern derives from something here.
 
-If missing, **block**: enumerating reads without a feature spec produces fiction. Recommend `/product-8-engineering-handoff` first.
+If missing, **block**: enumerating reads without a feature spec produces fiction. Recommend `/product-9-engineering-handoff` first.
 
 Optional but useful:
 - `./artifacts/PRFAQ.md` — for the broader context and any user-facing claims that imply reads (e.g., "search across all your leads")
@@ -376,7 +376,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-9-access-patterns — ./artifacts/access-patterns.md
+YYYY-MM-DD HH:MM PST — /product-10-access-patterns — ./artifacts/access-patterns.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -386,5 +386,5 @@ Use the actual current local PST time. If unsure of the timezone, ask once and r
 Close with:
 
 > Next:
-> - `/product-10-data-model` — draw the data model defended by these access patterns.
+> - `/product-11-data-model` — draw the data model defended by these access patterns.
 > - Or `/product-7-stress-test ./artifacts/access-patterns.md` if the cross-tenant prevention plan, hot-partition story, or security-query inventory feels soft. The Technical + Operator + (security) POVs are the right lineup.

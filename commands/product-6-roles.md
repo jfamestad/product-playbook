@@ -17,9 +17,9 @@ This phase is **a conversation, not a checklist**. Four areas, each walked with 
 
 Outputs feed downstream:
 - `/product-7-stress-test` may attack the role/tenancy model
-- `/product-8-engineering-handoff` carries the in-scope features forward as engineering work
-- `/product-9-access-patterns` derives security queries and tenancy model from this
-- `/product-10-data-model` derives the org/user/role entities from this
+- `/product-9-engineering-handoff` carries the in-scope features forward as engineering work
+- `/product-10-access-patterns` derives security queries and tenancy model from this
+- `/product-11-data-model` derives the org/user/role entities from this
 
 ---
 
@@ -92,7 +92,7 @@ For each in-scope role:
 
 The question to answer: **what's a tenant, and how do users join one?**
 
-This is the load-bearing decision for everything downstream. Get it right here or pay later in `/product-9-access-patterns` and `/product-10-data-model`.
+This is the load-bearing decision for everything downstream. Get it right here or pay later in `/product-10-access-patterns` and `/product-11-data-model`.
 
 ### 4.1 What is a tenant?
 Define it in plain English. Common shapes:
@@ -221,7 +221,7 @@ Customer can delete their tenant and all associated data.
 
 Default at MVP: **manual.** Workaround: customer emails us, we run a script. Re-eval trigger: GDPR/CCPA scope, or customer needs self-serve deletion before signing.
 
-Capture the deletion semantics: hard delete, soft delete + N-day retention, archive-then-purge. This decision propagates to `/product-10-data-model` lifecycle decisions.
+Capture the deletion semantics: hard delete, soft delete + N-day retention, archive-then-purge. This decision propagates to `/product-11-data-model` lifecycle decisions.
 
 ### 6.7 Org settings
 - SSO (SAML, OIDC)
@@ -239,7 +239,7 @@ The business-level sign-on decision (not the technology — that's an implementa
 - Default at MVP: pick one that covers the top-3 customers; defer the rest.
 - Account recovery: how does a user reset access?
 
-This decision propagates into `/product-9-access-patterns` (auth queries) and `/product-11-prebuild-qa` (where the technology choice is made).
+This decision propagates into `/product-10-access-patterns` (auth queries) and `/product-12-prebuild-qa` (where the technology choice is made).
 
 ## Step 7 — Out-of-scope (defer list)
 
@@ -260,13 +260,13 @@ Call out explicitly what this artifact pushes downstream — so the user sees th
 ## Feeds downstream
 
 - **`/product-7-stress-test`** (if invoked on this artifact): Customer + Sponsor + Operator POVs are sharpest. Watch for "this tenancy model breaks at customer #2" and "this operational deferral becomes a fire at first scale event."
-- **`/product-8-engineering-handoff`**: in-scope operational features become engineering work items with prioritization tier.
-- **`/product-9-access-patterns`**:
+- **`/product-9-engineering-handoff`**: in-scope operational features become engineering work items with prioritization tier.
+- **`/product-10-access-patterns`**:
   - Tenancy model → partitioning strategy
   - Roles + capabilities → permission-check queries
   - Sign-on choice → auth queries
   - Multi-tenant decision → cross-tenant prevention plan
-- **`/product-10-data-model`**:
+- **`/product-11-data-model`**:
   - Tenant entity (Org, Workspace, etc.)
   - User entity + tenant membership
   - Role entity (if multi-role)
@@ -378,13 +378,13 @@ Use this structure exactly:
 ## Feeds downstream
 
 - **`/product-7-stress-test`**: Customer + Sponsor + Operator POVs sharpest here.
-- **`/product-8-engineering-handoff`**: in-scope operational features become engineering work items.
-- **`/product-9-access-patterns`**:
+- **`/product-9-engineering-handoff`**: in-scope operational features become engineering work items.
+- **`/product-10-access-patterns`**:
   - Tenancy model → partitioning strategy
   - Roles + capabilities → permission-check queries
   - Sign-on choice → auth queries
   - Multi-tenant decision → cross-tenant prevention plan
-- **`/product-10-data-model`**:
+- **`/product-11-data-model`**:
   - Tenant, User, Role, Audit-log entities (those that are in scope)
   - Deletion semantics → lifecycle decisions per entity
 ```
@@ -426,4 +426,4 @@ Close with:
 > Next:
 > - `/product-7-stress-test ./artifacts/mvp-scope.md` — the natural antagonist gate after scope + roles. Lineup: Sponsor, Technical, Operator, Customer. The Operator POV will hammer at the operational-deferrals list, which is exactly the cheap-to-fix-now feedback you want.
 > - Or `/product-7-stress-test ./artifacts/roles.md` directly if the tenancy model, permission matrix, or operational-deferrals list felt soft on its own. Customer + Sponsor + Operator POVs are sharpest.
-> - Then `/product-8-engineering-handoff` to package scope + roles for build.
+> - Then `/product-9-engineering-handoff` to package scope + roles for build.
