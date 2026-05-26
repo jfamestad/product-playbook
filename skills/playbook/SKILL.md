@@ -20,7 +20,24 @@ Full reference (longer-form): `references/full-playbook.md`. Read it once per pr
 
 Every phase produces artifacts. The artifact is the deliverable, not the conversation. If an artifact is missing or weak, downstream phases will reveal it as drift — stop and fix the upstream artifact rather than papering over.
 
-Two antagonist gates exist, both before the build: **Phase 1 (PRFAQ)** and **Phase 2 (MVP scope)**. Both invoke the `tear-it-apart` skill in this plugin.
+Two antagonist gates exist, both before the build: after `/product-2-vision` (PRFAQ) and after `/product-5-mvp-scope`. Both invoke the `tear-it-apart` skill in this plugin.
+
+## Conventions
+
+**Artifact location.** Artifacts always live as local markdown files under `./artifacts/` (relative to the user's current working directory). Period. The local markdown is canonical — it's what *you* (the project AI) read on every turn. Don't scatter artifacts across the repo, the home directory, or wherever feels intuitive — `./artifacts/` is where you (or a fresh agent) goes to find them.
+
+**Toolchain integration.** When a command writes an artifact that has a natural home in a vendor tool (backlog → GitHub Issues / Jira / Linear / Asana; design docs → Confluence / Notion; design files → Figma; product plans → Aha; etc.), the command must:
+
+1. Check `./artifacts/toolchain.md` (populated during `/product-1-kickoff`) to see whether the team has named a tool for this artifact type.
+2. If a tool is named AND that vendor's MCP server is available in the session, offer to load the local artifact into the tool (e.g. "Want me to push these backlog items to your GitHub repo as issues?").
+3. If the user accepts, perform the push as an **additive sync** — the local markdown remains the source of truth. Future edits happen locally first, then re-push.
+4. If no toolchain file exists, no tool is named for this artifact type, or the MCP isn't available, just write the local markdown and move on.
+
+This convention applies to every artifact-writing command. Don't build separate `-github`, `-jira`, `-notion` command variants — one command per phase, branching at the integration step.
+
+**Cross-cutting log.** Every command appends a single line to `./artifacts/product-log.md` on successful completion: `YYYY-MM-DD HH:MM <TZ> — /product-N-name — <artifact path or external destination>`. Timestamps are local PST unless the user has specified otherwise. Every command bootstraps the log file with a header if it doesn't already exist — don't assume `/product-0-intro` ran first.
+
+**Existing artifacts.** Before overwriting, infer from the user's request whether they want to continue iterating an existing file or start fresh. Ask only if intent is genuinely unclear. Never silently overwrite.
 
 ## The 11 Phases
 
