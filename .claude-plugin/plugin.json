@@ -1,7 +1,7 @@
 {
   "name": "product-playbook",
-  "version": "0.1.0",
-  "description": "An 11-phase product playbook for solo builders and small teams — taking an idea from 'I think there's something here' to first paying customer and beyond — bundled with a multi-POV antagonist skill for stress-testing each phase.",
+  "version": "0.2.0",
+  "description": "A 12-phase product playbook for solo builders and small teams — taking an idea from 'I think there's something here' to a buildable backlog — with optional push of artifacts into the team's toolchain (GitHub Issues, Jira, Linear, Confluence, Notion, Figma) via vendor MCPs. Bundled with a multi-POV antagonist skill for stress-testing each phase.",
   "author": {
     "name": "Josh Famestad"
   },
