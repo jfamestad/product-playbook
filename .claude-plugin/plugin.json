@@ -1,0 +1,21 @@
+{
+  "name": "product-playbook",
+  "version": "0.1.0",
+  "description": "An 11-phase product playbook for solo builders and small teams — taking an idea from 'I think there's something here' to first paying customer and beyond — bundled with a multi-POV antagonist skill for stress-testing each phase.",
+  "author": {
+    "name": "Josh Famestad"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product",
+    "playbook",
+    "PRFAQ",
+    "MVP",
+    "prototype",
+    "antagonist",
+    "pre-mortem",
+    "review",
+    "discovery",
+    "solo-builder"
+  ]
+}
