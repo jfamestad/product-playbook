@@ -1,86 +1,192 @@
 # product-playbook
 
-A Claude Code plugin for taking a product idea from "I think there's something here" to first paying customer and beyond — distilled from real solo-builder + AI-team work, May 2026.
+A Claude Code plugin for taking a product idea from "I think there's something here" to first paying customer and beyond. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC.
 
-Two skills, one disciplined sequence.
+13 slash commands. Every phase produces a concrete artifact. If you don't have the artifact, the phase isn't done.
 
-## What's in the box
+---
 
-### `playbook` — 11-phase product playbook (Phase 0 → Phase 10)
+## What you get
 
-A repeatable sequence of phases, each producing concrete **artifacts** that unlock the next phase:
+**Commands** — a numbered sequence of phase commands plus a read-only status check. Run them in order, or jump back any time. Each writes its output to `./artifacts/` so future commands (and future you) can pick up cold.
 
-| Phase | Outcome |
-|------|---------|
-| **0** Durable principles | Non-negotiables captured as feedback memories |
-| **1** PRFAQ + one-pager | 60-second pitch + named first-three customers + required FAQ questions answered |
-| **2** MVP scope with numbers | Defensible scope (budget, geo, source count) with antagonist sign-off |
-| **3** Access-pattern-first data model | Single-table design defended by access patterns, not aesthetics |
-| **4** Meta-feedback as you go | Durable guidance saved as `feedback_<topic>.md` memories |
-| **5** Clickable prototype | Local URL the user can click through in 10–20 minutes |
-| **6** Iterate on the prototype | Respond to clicks; centralize variation in `lib/<x>-norms.ts` |
-| **7** Verify and close the loop | Click-through verification + new feedback memories captured |
-| **8** Bootstrap the buildable backlog | Repo + labels + milestone + issue template + decisions-resolution loop |
-| **9** Plan path to first paying customer | First-three nailed down; pilot agreement signable; pilot→paid go/no-go bar |
-| **10** Plan path to scale | Pricing tiers, sales motion, growth thesis, org plan, kill criteria |
+**Skills** — `playbook` (the methodology reference) and `tear-it-apart` (a multi-POV antagonist invoked at two gates and runnable standalone).
 
-Two antagonist gates — at **Phase 1 (PRFAQ)** and **Phase 2 (MVP scope)** — call the `tear-it-apart` skill. These are the cheapest places in the whole sequence to find a fatal flaw.
+**Convention** — local markdown is canonical. If your team uses GitHub Issues, Jira, Linear, Notion, Confluence, Figma, etc., commands offer to push artifacts into those tools via vendor MCPs as an additive sync.
 
-### `tear-it-apart` — multi-POV antagonist
-
-A constructive antagonist that rotates through point-of-view lenses in sequential thinking steps:
-
-- **Product** — JTBD fit, units of value, packaging, scope discipline
-- **Customer** — adoption friction, time-to-first-value, willingness to pay
-- **Financial sponsor** — unit economics, payback, ROI sensitivity, kill criteria
-- **Technical** — feasibility, scaling, integration surface, vendor lock-in
-- **Operator** — support burden, runbook gaps, manual toil
-- **Market / competitive** — moat, timing, incumbent response, why-now
-- **Devil's advocate** — strongest case the idea is wrong
-
-Each POV produces critical flaws, risks, weaknesses, and one sharp question. Cross-POV synthesis identifies the load-bearing assumptions. Ends with a Proceed / Proceed-with-changes / Pause / Kill recommendation.
-
-Deep expertise in **packaging units of value** (what's the unit, does it align with customer-perceived value, does it align with cost-to-serve, is it measurable/observable/disputable, what's the upgrade trigger, what's the free-vs-paid line, what's the expansion path).
-
-Works **standalone** (any time a doc, design, plan, or strategy needs stress-testing) or **inside `playbook`** as a phase gate.
+---
 
 ## Installation
 
-This plugin follows the Claude Code plugin format. With Claude Code's plugin system:
+Clone or symlink into your Claude Code plugins location, then enable via `/plugin` in Claude Code:
 
 ```bash
-# Clone or copy this directory into your plugins location, then enable it
-# via /plugin in Claude Code, or wire it in directly via your settings.
+git clone git@github.com:jfamestad/product-playbook.git ~/path/to/plugins/product-playbook
 ```
 
-Once installed, the skills become available to Claude. Trigger them by:
+Once enabled, all `/product-*` commands appear in Claude Code. Skills auto-trigger on relevant phrasing ("PRFAQ", "MVP scope", "tear this apart", etc.).
 
-- **The playbook**: ask Claude about "PRFAQ", "MVP scope", "build a prototype", "buildable backlog", "first paying customer", or "scale plan" — or invoke directly with `/product-playbook:playbook`.
-- **Tear it apart**: ask Claude to "tear this apart", "red team this", "find the flaws", "pre-mortem this" — or invoke directly with `/product-playbook:tear-it-apart`.
+---
+
+## The 12 phases
+
+| # | Command | What you walk out with |
+|---|---|---|
+| 0 | `/product-0-intro` | Orientation — no artifact |
+| 1 | `/product-1-kickoff` | `principles.md` + `toolchain.md` |
+| 2 | `/product-2-vision` | `PRFAQ.md` + `one-pager.md` |
+| 3 | `/product-3-gtm` | `gtm-plan.md` with named first-three customers |
+| 4 | `/product-4-design` | `design-seed/` then `design/index.md` (via Claude Design) |
+| 5 | `/product-5-mvp-scope` | `mvp-scope.md` with defensible numbers |
+| 6 | `/product-6-roles` | `roles.md` — tenancy, permissions, operational features |
+| 7 | `/product-7-stress-test` | `stress-test-*.md` — multi-POV antagonist review |
+| 8 | `/product-8-engineering-handoff` | `product-requirements.md` |
+| 9 | `/product-9-access-patterns` | `access-patterns.md` |
+| 10 | `/product-10-data-model` | `data-model.md` (single-table design) |
+| 11 | `/product-11-prebuild-qa` | `prebuild-qa.md` — 13 questions answered |
+| 12 | `/product-12-backlog` | `backlog/` — one item per file + index, optional push to issue tracker |
+| — | `/product-status` | Read the log, see where you are. No artifact written |
+
+`/product-7-stress-test` is gated into the flow at two natural points (after `/product-2-vision` and after `/product-5-mvp-scope`) but can run ad-hoc on any artifact at any time.
+
+---
+
+## How to drive the plugin
+
+### First run, fresh product
+
+```text
+/product-0-intro       # orient yourself — what the playbook is, what's coming
+/product-1-kickoff     # principles + toolchain + tech stack
+/product-2-vision      # draft PRFAQ + one-pager
+/product-7-stress-test ./artifacts/PRFAQ.md   # gate 1
+/product-3-gtm         # named first-three + pricing v0.1 + outreach plan
+/product-4-design      # seed Claude Design, iterate, integrate handoff
+/product-5-mvp-scope   # IN/OUT with numbers
+/product-6-roles       # tenancy + permissions + operational features
+/product-7-stress-test ./artifacts/mvp-scope.md   # gate 2
+/product-8-engineering-handoff   # product-requirements.md
+/product-9-access-patterns       # questions you need to ask the data
+/product-10-data-model           # single-table design defended by patterns
+/product-11-prebuild-qa          # 13 pre-build questions
+/product-12-backlog              # buildable backlog → optional push to tracker
+```
+
+### Resuming a product already in flight
+
+```text
+/product-status        # read the log + inventory artifacts + see recommended next
+```
+
+`/product-status` reads `./artifacts/product-log.md`, lists which phases are complete, flags unresolved stress-test gates, and recommends one concrete next command.
+
+### Re-running a phase
+
+Any command can be re-run. Each detects whether the artifact already exists and asks (or infers) whether you want to iterate or start fresh. Never silently overwrites.
+
+### Running the antagonist on demand
+
+```text
+/product-7-stress-test ./artifacts/<any-artifact>.md
+```
+
+Rotates POVs (Product, Customer, Sponsor, Technical, Operator, Market, Devil's Advocate), surfaces critical flaws + load-bearing assumptions, and ends with a Proceed / Proceed-with-changes / Pause / Kill recommendation.
+
+---
+
+## Artifacts and the log
+
+Every artifact lands under `./artifacts/` (relative to your current working directory). The directory ends up looking like:
+
+```
+./artifacts/
+├── product-log.md             # append-only timeline of phase completions
+├── principles.md
+├── toolchain.md
+├── PRFAQ.md
+├── one-pager.md
+├── gtm-plan.md
+├── design-seed/               # what you uploaded to Claude Design
+├── design/                    # the integrated handoff bundle
+│   └── index.md
+├── mvp-scope.md
+├── roles.md
+├── stress-test-PRFAQ.md       # one per stress-test run
+├── stress-test-mvp-scope.md
+├── product-requirements.md
+├── access-patterns.md
+├── data-model.md
+├── prebuild-qa.md
+└── backlog/
+    ├── index.md
+    └── 001-init-repo-ci.md    # one file per work item
+```
+
+`./artifacts/product-log.md` is append-only. Each phase command writes one line: `YYYY-MM-DD HH:MM PST — /product-N-name — <artifact path>`. That's how `/product-status` reconstructs progress without any other state.
+
+---
+
+## Toolchain integration
+
+Local markdown is always the source of truth. But if your team lives in vendor tools, commands offer to push artifacts into them.
+
+`/product-1-kickoff` captures `./artifacts/toolchain.md` covering both **team toolchain** (issue tracker, design tool, docs/wiki, comms, email, CRM, source control) and **tech stack** (language, frontend, backend, database, infra, cloud, AI providers, CI/CD).
+
+Subsequent commands consult `toolchain.md` and offer the relevant push:
+
+| Artifact | Natural destination |
+|---|---|
+| PRFAQ, MVP scope, roles, requirements, prebuild-QA | Confluence / Notion / Google Docs |
+| GTM plan first-three | Salesforce / HubSpot |
+| Design index | Figma / Confluence / Notion |
+| Engineering requirements | Confluence + Jira/Linear epic |
+| Backlog items | GitHub Issues / Jira / Linear / Asana |
+
+The push only fires if (a) the tool is named in `toolchain.md` and (b) the vendor's MCP is available in the current session. Otherwise the command stays local and moves on. Vendor pushes are **additive** — edit locally first, then re-push.
+
+---
+
+## The 5 principles
+
+These govern every phase. `/product-1-kickoff` walks them and lets you adopt, edit, drop, or add.
+
+1. **Artifacts > conversation.** Every phase produces a named file. If the file doesn't exist, the phase isn't done.
+2. **Numbers > adjectives.** "$300/mo data budget, 3 metros, ship by July 15" resists drift. "Lean and focused" doesn't.
+3. **Mock data is a schema spec.** Every field in the prototype maps 1:1 to a real entity at MVP. The cutover is mechanical when this holds.
+4. **Antagonist gates are cheap.** A 30-minute multi-POV review at PRFAQ and MVP-scope is the highest-ROI time in the whole sequence.
+5. **Surface assumptions, give an override.** When the playbook (or your product) picks a default, flag it as a guess and let the user override in two clicks.
+
+Two optional principles from the Working Backwards / PRFAQ tradition (customer obsession, truth-seeking over selling) are surfaced as defaults in `/product-1-kickoff`.
+
+---
+
+## Skills
+
+### `playbook`
+
+The methodology reference. Loaded automatically when the user mentions PRFAQ, MVP scope, prototype, buildable backlog, first paying customer, or scale plan. Long-form playbook lives at `skills/playbook/references/full-playbook.md` — read it once per product if this is your first run.
+
+### `tear-it-apart`
+
+Multi-POV antagonist. Triggers on "tear this apart", "red team", "find the flaws", "pre-mortem". Invoked at the two gates by `/product-7-stress-test`, and runnable standalone any time a doc, design, plan, or strategy needs stress-testing.
+
+Deep expertise in **packaging units of value** (what's the unit, does it align with customer-perceived value AND cost-to-serve, is it measurable/observable/disputable, what's the upgrade trigger, free-vs-paid line, expansion path).
+
+---
 
 ## Who this is for
 
 - **Solo builders and small teams** taking a new product from idea to first customers
 - **Builders working with an AI team** (Claude, agents) who want a repeatable scaffolding
-- **Anyone** who has felt the pain of a prototype that drifted from the PRFAQ, an MVP that ballooned, or a launch that hit avoidable flaws on day one
+- **Anyone** who's felt the pain of a prototype that drifted from the PRFAQ, an MVP that ballooned, or a launch that hit avoidable flaws on day one
 
 ## What this is *not*
 
 - A heavyweight enterprise PDLC framework — this is sized for one or two builders + AI
-- Tech-stack opinionated beyond the Phase 5 prototype defaults (Next.js / Tailwind / localStorage)
-- Production-operations focused — Phase 10 is the last phase covered; ongoing operations are out of scope
+- Tech-stack opinionated beyond defaults surfaced in `/product-1-kickoff` and the prototype guidance
+- Production-operations focused — the sequence ends at first paying customer + scale planning; ongoing operations are out of scope
 
-## Philosophy
-
-- **Artifacts > conversation.** Every phase outputs a concrete artifact. If you don't have the artifact, the phase isn't done.
-- **Numbers > adjectives.** "$300/mo data budget" resists drift; "we'll keep it focused" doesn't.
-- **Mock data is a schema spec.** Every field in the prototype maps to a real entity at MVP. The cutover is mechanical when this is true.
-- **Antagonist gates are cheap.** The PRFAQ-gate and MVP-scope-gate antagonist passes are the highest-ROI 30 minutes in the whole sequence.
-- **Surface assumptions, give an override.** When the playbook (or your product) guesses at a default, flag the guess and let the user override in two clicks.
-
-## Full reference
-
-The long-form playbook lives at `skills/playbook/references/full-playbook.md`. Read it once per product if this is your first run.
+---
 
 ## License
 
