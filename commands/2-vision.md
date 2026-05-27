@@ -2,7 +2,7 @@
 description: Draft the PRFAQ (press release + internal & external FAQ), iterate with user feedback, then generate the one-pager. Writes ./artifacts/PRFAQ.md and ./artifacts/one-pager.md.
 ---
 
-# /product-2-vision
+# /2-vision
 
 You are helping the user **work backwards from the customer** to articulate the product's vision. The artifact is a PRFAQ — a press release of the product *as if it already shipped*, paired with an FAQ that surfaces the questions a smart team would ask before approving the work. Once the PRFAQ is locked, you'll generate a tight one-pager derived from it.
 
@@ -87,11 +87,11 @@ These are the questions a senior operator would ask before approving the work. *
 1. **What's the market size and is it big enough to matter?** TAM, SAM, plausible-near-term opportunity. Numbers, not adjectives.
 2. **Who are the competitors and what's our differentiation?** Name 2–4 real alternatives (including status quo / DIY). One sentence each on why we win.
 3. **What are the top 3 risks that could kill this?** Be specific. "Tech risk" is not an answer. "If LLM call costs don't drop 40% in 18 months, gross margin caps at 15%" is.
-4. **What are the top 3 assumptions that must be true?** Same precision standard. These become the things `/product-7-stress-test` will hammer at.
+4. **What are the top 3 assumptions that must be true?** Same precision standard. These become the things `/7-stress-test` will hammer at.
 5. **What's the per-unit economics story?** What's the unit (lead, run, seat, deal)? What does each unit cost to serve? What does it sell for? When does this turn profitable per unit?
 6. **What new capabilities do we need to build or buy?** What's not in our current stack/skillset that this requires?
 7. **What does success look like in 6 months? In 18 months?** Concrete metrics, not "traction."
-8. **What's the smallest version that proves the thesis?** This previews `/product-5-mvp-scope` — don't fully scope here, but name the cheapest experiment that disconfirms the riskiest assumption.
+8. **What's the smallest version that proves the thesis?** This previews `/5-mvp-scope` — don't fully scope here, but name the cheapest experiment that disconfirms the riskiest assumption.
 
 Ask each question. Capture answers in the user's voice. Don't let them skip with "TBD" — if they don't know, that's a flag worth recording explicitly ("Unknown — must resolve before MVP scope lock").
 
@@ -252,7 +252,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-2-vision — ./artifacts/PRFAQ.md + ./artifacts/one-pager.md
+YYYY-MM-DD HH:MM PST — /2-vision — ./artifacts/PRFAQ.md + ./artifacts/one-pager.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -272,7 +272,7 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next, either:
-> - `/product-7-stress-test ./artifacts/PRFAQ.md` — run the multi-POV antagonist on what you just built (recommended before going further).
-> - `/product-3-gtm` — turn the first-three customers into a concrete go-to-market plan.
+> - `/7-stress-test ./artifacts/PRFAQ.md` — run the multi-POV antagonist on what you just built (recommended before going further).
+> - `/3-gtm` — turn the first-three customers into a concrete go-to-market plan.
 
 Recommend the stress-test first if any of the FAQ answers came out soft.

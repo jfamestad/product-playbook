@@ -2,7 +2,7 @@
 description: Seed Claude Design with the project's PRFAQ + GTM + principles as a verbatim-quoted brief, then integrate the handoff bundle back into the project. Writes ./artifacts/design-seed/ and (after Claude Design returns results) ./artifacts/design/index.md.
 ---
 
-# /product-4-design
+# /4-design
 
 You are helping the user produce the design direction for the product. The actual design work happens in **Claude Design** ([claude.ai/design](https://claude.ai/design)) — an Anthropic product that takes prompts + files and produces interactive HTML mockups, flows, and design language, then ships a **handoff bundle** to Claude Code for integration.
 
@@ -34,7 +34,7 @@ Required upstream artifacts:
 - `./artifacts/PRFAQ.md` — the narrative, problem in customer voice, customer quote, getting-started
 - `./artifacts/gtm-plan.md` — ICP, top-3 customer situations, pricing/unit-of-value
 
-If either is missing, **block**: a design brief without a validated customer and validated narrative produces fiction. Recommend `/product-2-vision` then `/product-3-gtm` first.
+If either is missing, **block**: a design brief without a validated customer and validated narrative produces fiction. Recommend `/2-vision` then `/3-gtm` first.
 
 Strongly recommended:
 - `./artifacts/principles.md` — any principles that bind design choices (especially customer-obsession, surface-assumptions-give-override)
@@ -330,13 +330,13 @@ Tell the user:
 > 1. In Claude Design, ask: *"Package this as a handoff bundle for Claude Code, targeting `./artifacts/design/` in my project."*
 > 2. Claude Design will produce a bundle containing the flows, mockups, design tokens, generated HTML/components, and a handoff README.
 > 3. Pass the bundle to Claude Code with: *"Integrate this Claude Design handoff bundle into `./artifacts/design/`."* Claude Code will unpack the files into the project.
-> 4. Once integration is complete, come back and run `/product-4-design` again — it'll detect the new `./artifacts/design/` contents and move to Step 9 (the catalog step).
+> 4. Once integration is complete, come back and run `/4-design` again — it'll detect the new `./artifacts/design/` contents and move to Step 9 (the catalog step).
 
 The catalog step (Step 9) only runs when `./artifacts/design/` exists and contains integration output.
 
 ## Step 9 — Catalog the integrated results
 
-Run this step only when `./artifacts/design/` exists with handoff-bundle output. (If the user invokes `/product-4-design` after integration, detect this from the file presence and jump here.)
+Run this step only when `./artifacts/design/` exists with handoff-bundle output. (If the user invokes `/4-design` after integration, detect this from the file presence and jump here.)
 
 Walk the user through producing `./artifacts/design/index.md`. List:
 
@@ -401,13 +401,13 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append the appropriate line depending on which step the user reached this session:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-4-design — ./artifacts/design-seed/ — seed package written; iterate in claude.ai/design
+YYYY-MM-DD HH:MM PST — /4-design — ./artifacts/design-seed/ — seed package written; iterate in claude.ai/design
 ```
 
 Or, after the catalog step:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-4-design — ./artifacts/design/index.md — handoff bundle integrated
+YYYY-MM-DD HH:MM PST — /4-design — ./artifacts/design/index.md — handoff bundle integrated
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -438,10 +438,10 @@ Branch on which step the user reached:
 > Next:
 > - Open [claude.ai/design](https://claude.ai/design) and upload `./artifacts/design-seed/` as described in Step 6.
 > - Iterate as long as you need. When you're ready, request the handoff bundle and integrate via Claude Code.
-> - Then run `/product-4-design` again — it'll detect the integrated results and produce the catalog (`./artifacts/design/index.md`).
+> - Then run `/4-design` again — it'll detect the integrated results and produce the catalog (`./artifacts/design/index.md`).
 
 **If they integrated and cataloged (Step 9 done):**
 
 > Next:
-> - `/product-5-mvp-scope` — define the defensible MVP scope with numbers, now that the design direction is concrete.
-> - Or `/product-7-stress-test ./artifacts/design/index.md` if the design surfaced choices that feel load-bearing (Customer + Product POVs are sharpest here).
+> - `/5-mvp-scope` — define the defensible MVP scope with numbers, now that the design direction is concrete.
+> - Or `/7-stress-test ./artifacts/design/index.md` if the design surfaced choices that feel load-bearing (Customer + Product POVs are sharpest here).

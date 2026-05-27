@@ -2,7 +2,7 @@
 description: Make the explicit go/no-go decision to commit to building (or pivot, or kill) after the MVP-scope stress test. Forces a conscious commitment with named decider, dated decision, and pre-build commitments. Writes ./artifacts/go-no-go.md.
 ---
 
-# /product-8-go-no-go
+# /8-go-no-go
 
 You are walking the user through the **go/no-go decision** — the explicit, dated, named-decider commitment to build (or not build) what's been specified.
 
@@ -28,7 +28,7 @@ Required:
 - `./artifacts/mvp-scope.md` — what we're committing to (or not)
 - `./artifacts/stress-test-mvp-scope.md` — the antagonist's findings on that scope
 
-If `stress-test-mvp-scope.md` is missing, **block**: making a go/no-go decision without a stress test is exactly the failure mode this phase prevents. Recommend `/product-7-stress-test ./artifacts/mvp-scope.md` first.
+If `stress-test-mvp-scope.md` is missing, **block**: making a go/no-go decision without a stress test is exactly the failure mode this phase prevents. Recommend `/7-stress-test ./artifacts/mvp-scope.md` first.
 
 Strongly recommended:
 - `./artifacts/stress-test-PRFAQ.md` — the gate-1 findings (so we're not silently re-litigating vision-stage flaws)
@@ -57,7 +57,7 @@ For every flaw or assumption, the user must land in one of three states:
 - **Accepted with mitigation** — the flaw stands; here's the mitigation (cheap fallback, manual workaround, monitoring trigger).
 - **Accepted unmitigated** — the flaw stands; we're choosing to live with it; here's why the risk is acceptable.
 
-"We'll figure it out" is not a state. If the user can't pick one of the three, the scope isn't ready and go/no-go is premature — recommend another `/product-5-mvp-scope` pass or another `/product-7-stress-test`.
+"We'll figure it out" is not a state. If the user can't pick one of the three, the scope isn't ready and go/no-go is premature — recommend another `/5-mvp-scope` pass or another `/7-stress-test`.
 
 ## Step 4 — Make the decision
 
@@ -66,7 +66,7 @@ Ask the user directly: **Given everything above, what's the call?**
 Four options:
 
 ### Option A — Go
-Build it as specified. The scope is locked. Engineering picks up `product-requirements.md` next (`/product-9-engineering-handoff`).
+Build it as specified. The scope is locked. Engineering picks up `product-requirements.md` next (`/9-engineering-handoff`).
 
 ### Option B — Go with changes
 Build it, but with these specific changes from `mvp-scope.md`:
@@ -180,10 +180,10 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-8-go-no-go — ./artifacts/go-no-go.md — <decision>
+YYYY-MM-DD HH:MM PST — /8-go-no-go — ./artifacts/go-no-go.md — <decision>
 ```
 
-Include the decision (Go / Go-with-changes / Pause / Kill) inline in the log line so `/product-status` can surface it without re-opening the file.
+Include the decision (Go / Go-with-changes / Pause / Kill) inline in the log line so `/status` can surface it without re-opening the file.
 
 Use the actual current local PST time.
 
@@ -207,7 +207,7 @@ Branch on the decision:
 **If Go or Go with changes:**
 
 > Decision locked. Next:
-> - `/product-9-engineering-handoff` — package scope + roles + go/no-go commitments into the product requirements doc.
+> - `/9-engineering-handoff` — package scope + roles + go/no-go commitments into the product requirements doc.
 > - If Option B (Go with changes), confirm `./artifacts/mvp-scope.md` has been updated to reflect the changes — engineering reads scope, not this file.
 
 **If Pause:**
@@ -215,7 +215,7 @@ Branch on the decision:
 > Decision locked. No engineering work starts until <named signal> arrives. Owner: <name>. Re-evaluate by: <date or trigger>.
 >
 > While paused, you can still:
-> - Run `/product-7-stress-test` on any other artifact (the GTM plan often benefits)
+> - Run `/7-stress-test` on any other artifact (the GTM plan often benefits)
 > - Sharpen the named signal — what's the cheapest experiment that would produce it?
 
 **If Kill:**
@@ -224,5 +224,5 @@ Branch on the decision:
 >
 > Next:
 > - Archive `./artifacts/` (move to `./artifacts-archive/<product-name>-killed-<date>/` so the next product starts clean)
-> - Optionally run `/product-0-intro` on the next idea
+> - Optionally run `/0-intro` on the next idea
 > - Re-read the lessons section before naming the next first-three

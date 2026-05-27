@@ -2,13 +2,13 @@
 description: Answer the 13 pre-build questions before engineering starts. Each question forces an explicit MVP decision (or a documented "deferred + workaround") so nothing critical surfaces mid-build. Writes ./artifacts/prebuild-qa.md.
 ---
 
-# /product-12-prebuild-qa
+# /12-prebuild-qa
 
-You are walking the user through the 13 pre-build questions — the things that are cheap to decide *before* code starts and expensive to discover mid-build. Most are not technical-architecture decisions (those belong in `/product-10-access-patterns` and `/product-11-data-model`); these are the decisions that span product, ops, support, GTM, and engineering — the ones that fall through the cracks.
+You are walking the user through the 13 pre-build questions — the things that are cheap to decide *before* code starts and expensive to discover mid-build. Most are not technical-architecture decisions (those belong in `/10-access-patterns` and `/11-data-model`); these are the decisions that span product, ops, support, GTM, and engineering — the ones that fall through the cracks.
 
 The discipline: every question gets an answer or an explicit defer-with-workaround. "We'll figure it out" is not an answer.
 
-Some questions partly overlap with earlier phases (`/product-6-roles` already covered tenancy and sign-on). When that's the case, **confirm and extend** rather than re-decide — but still capture the decision here so a fresh reader of `prebuild-qa.md` doesn't have to chase across files.
+Some questions partly overlap with earlier phases (`/6-roles` already covered tenancy and sign-on). When that's the case, **confirm and extend** rather than re-decide — but still capture the decision here so a fresh reader of `prebuild-qa.md` doesn't have to chase across files.
 
 ---
 
@@ -16,7 +16,7 @@ Some questions partly overlap with earlier phases (`/product-6-roles` already co
 
 Open with this orientation:
 
-> **Pre-build Q&A** answers the 13 questions a senior engineer / operator would ask before approving the build start. Each one is cheap to decide now and expensive to discover mid-build. Most aren't pure-tech — they span product, ops, support, GTM, and engineering. Some overlap with `/product-6-roles` (tenancy, sign-on) — for those, confirm and extend rather than re-decide.
+> **Pre-build Q&A** answers the 13 questions a senior engineer / operator would ask before approving the build start. Each one is cheap to decide now and expensive to discover mid-build. Most aren't pure-tech — they span product, ops, support, GTM, and engineering. Some overlap with `/6-roles` (tenancy, sign-on) — for those, confirm and extend rather than re-decide.
 >
 > Every question gets an answer or an explicit defer-with-workaround. "We'll figure it out" doesn't pass.
 >
@@ -32,7 +32,7 @@ Strongly recommended (each one feeds multiple questions):
 - `./artifacts/data-model.md` and `./artifacts/access-patterns.md` — if they exist already
 - `./artifacts/principles.md` — keep alignment
 
-None are strictly required to block, but if `mvp-scope.md` is missing, **warn**: pre-build Q&A without a locked scope produces hand-waving. Strongly recommend `/product-5-mvp-scope` first.
+None are strictly required to block, but if `mvp-scope.md` is missing, **warn**: pre-build Q&A without a locked scope produces hand-waving. Strongly recommend `/5-mvp-scope` first.
 
 If `./artifacts/prebuild-qa.md` exists, infer from the user's request whether to continue iterating or start fresh. Ask only if intent is genuinely unclear. Never silently overwrite.
 
@@ -49,7 +49,7 @@ Prompts:
 - How does a user sign in? Email+password, magic link, social (Google, Microsoft, Apple), enterprise SSO (SAML/OIDC)?
 - One method at MVP or several?
 - Account recovery: how does a user reset access?
-- Cross-reference: confirm/extend `/product-6-roles` §6.8 if it exists.
+- Cross-reference: confirm/extend `/6-roles` §6.8 if it exists.
 
 Capture:
 - Sign-on method(s) at MVP
@@ -57,13 +57,13 @@ Capture:
 - Deferred methods + re-eval trigger
 
 ### Q2 — Tenancy
-*(Confirm and extend from `/product-6-roles` if it exists — don't re-decide.)*
+*(Confirm and extend from `/6-roles` if it exists — don't re-decide.)*
 
-Prompts (if `/product-6-roles` already answered these):
+Prompts (if `/6-roles` already answered these):
 - Restate the tenant definition in one sentence so it's local to this file.
-- Anything that's changed since `/product-6-roles` was written? If yes, update `roles.md` too.
+- Anything that's changed since `/6-roles` was written? If yes, update `roles.md` too.
 
-If `/product-6-roles` doesn't exist (user skipped it), block — recommend running it first.
+If `/6-roles` doesn't exist (user skipped it), block — recommend running it first.
 
 Capture:
 - Tenant definition
@@ -196,7 +196,7 @@ Capture (per customer):
 - Agreement status (signed / drafted / verbal / nothing)
 
 ### Q10 — Build sequence
-*(Features + components in build order, with prioritization between them. Feeds `/product-13-backlog` ordering.)*
+*(Features + components in build order, with prioritization between them. Feeds `/13-backlog` ordering.)*
 
 Prompts:
 - Pull the P0 list from `product-requirements.md`. In what order do these get built?
@@ -282,10 +282,10 @@ Capture:
 
 After all 13 questions, scan for conflicts with upstream artifacts. Common ones:
 
-- Q1 (sign-on) vs `/product-6-roles` §6.8 — flag if changed
-- Q2 (tenancy) vs `/product-6-roles` §4 — flag if changed
-- Q3 (pricing model) vs `/product-3-gtm` §5 — flag if MVP billing diverged from pricing v0.1
-- Q9 (pilot deal scope) vs `/product-3-gtm` top-3 — flag if pilot commitments don't match the GTM ask
+- Q1 (sign-on) vs `/6-roles` §6.8 — flag if changed
+- Q2 (tenancy) vs `/6-roles` §4 — flag if changed
+- Q3 (pricing model) vs `/3-gtm` §5 — flag if MVP billing diverged from pricing v0.1
+- Q9 (pilot deal scope) vs `/3-gtm` top-3 — flag if pilot commitments don't match the GTM ask
 
 If any conflict, surface it: "this conflicts with X.md — should we update X.md too?" Don't silently let the artifacts diverge.
 
@@ -452,7 +452,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-12-prebuild-qa — ./artifacts/prebuild-qa.md
+YYYY-MM-DD HH:MM PST — /12-prebuild-qa — ./artifacts/prebuild-qa.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -472,5 +472,5 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next:
-> - `/product-13-backlog` — turn the locked scope + answered pre-build questions into a buildable backlog as local markdown.
-> - Or `/product-7-stress-test ./artifacts/prebuild-qa.md` if any answer felt soft — especially Q4 (failure modes), Q8 (HITL), Q9 (pilot commitments), or Q12 (observability). Operator + Customer + Devil's Advocate POVs are sharpest here.
+> - `/13-backlog` — turn the locked scope + answered pre-build questions into a buildable backlog as local markdown.
+> - Or `/7-stress-test ./artifacts/prebuild-qa.md` if any answer felt soft — especially Q4 (failure modes), Q8 (HITL), Q9 (pilot commitments), or Q12 (observability). Operator + Customer + Devil's Advocate POVs are sharpest here.

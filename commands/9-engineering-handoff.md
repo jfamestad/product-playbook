@@ -2,7 +2,7 @@
 description: Write the product requirements that engineering uses to start work. Features with acceptance criteria, prioritization, known business dependencies. Writes ./artifacts/product-requirements.md.
 ---
 
-# /product-9-engineering-handoff
+# /9-engineering-handoff
 
 You are producing the product requirements document — the brief engineering reads to start work. Internally we call this the engineering handoff; the file on disk is `./artifacts/product-requirements.md`.
 
@@ -13,8 +13,8 @@ Three jobs, all required:
 3. **Known business dependencies** — external services, vendor agreements, legal/compliance, customer obligations, pricing implementation, launch coordination. Each with status and owner.
 
 What this is **not**:
-- Not the architecture (that's `/product-10-access-patterns` and `/product-11-data-model`).
-- Not the buildable backlog (that's `/product-13-backlog`).
+- Not the architecture (that's `/10-access-patterns` and `/11-data-model`).
+- Not the buildable backlog (that's `/13-backlog`).
 
 This is the brief that informs both.
 
@@ -26,7 +26,7 @@ Open with this orientation:
 
 > **Engineering handoff** produces the product requirements document — `./artifacts/product-requirements.md`. It's the brief engineering reads to start work. Three jobs: clear what to build (features with acceptance criteria), prioritization between features (tiers + critical path + cut order), and known business dependencies (each with status and owner).
 >
-> This isn't architecture (that's `/product-10-access-patterns` + `/product-11-data-model`) or the backlog (`/product-13-backlog`) — it's the brief those phases will draw from.
+> This isn't architecture (that's `/10-access-patterns` + `/11-data-model`) or the backlog (`/13-backlog`) — it's the brief those phases will draw from.
 >
 > Output: `./artifacts/product-requirements.md`.
 
@@ -36,9 +36,9 @@ Required upstream artifacts:
 - `./artifacts/mvp-scope.md` — the IN/OUT lists, constraints, success criteria, feedback collection design
 - `./artifacts/go-no-go.md` — the explicit commitment to build (with decider, date, pre-build commitments)
 
-If `mvp-scope.md` is missing, **block**: a requirements doc without a locked scope is fiction. Recommend running `/product-5-mvp-scope` first.
+If `mvp-scope.md` is missing, **block**: a requirements doc without a locked scope is fiction. Recommend running `/5-mvp-scope` first.
 
-If `go-no-go.md` is missing, **block**: engineering shouldn't pick up requirements that haven't been formally committed to. Recommend running `/product-8-go-no-go` first. (If the user insists, allow override — but capture in the requirements doc that no go/no-go exists, and flag the risk.)
+If `go-no-go.md` is missing, **block**: engineering shouldn't pick up requirements that haven't been formally committed to. Recommend running `/8-go-no-go` first. (If the user insists, allow override — but capture in the requirements doc that no go/no-go exists, and flag the risk.)
 
 If `go-no-go.md` exists but the decision was Pause or Kill, **stop**: there's nothing to hand off. Tell the user and exit.
 
@@ -203,7 +203,7 @@ Pulled forward and consolidated:
 - **Ship by:** <date from MVP scope>
 - **Money budget:** $X total / $Y per month
 - **Effort budget:** N person-weeks
-- **Tech stack:** <Any already-decided opinions — language, framework, infra. If undecided, say "to be decided in /product-7" and leave it open.>
+- **Tech stack:** <Any already-decided opinions — language, framework, infra. Pull from `./artifacts/toolchain.md`. If undecided, say "TBD — engineering to recommend" and leave it open.>
 
 ## Step 9 — Open business questions for engineering input
 
@@ -312,7 +312,7 @@ Use this structure exactly:
 - **Ship by:** <date>
 - **Money budget:** <$X>
 - **Effort budget:** <N person-weeks>
-- **Tech stack:** <decisions or "TBD in /product-7">
+- **Tech stack:** <decisions from toolchain.md, or "TBD — engineering to recommend">
 
 ---
 
@@ -342,7 +342,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-9-engineering-handoff — ./artifacts/product-requirements.md
+YYYY-MM-DD HH:MM PST — /9-engineering-handoff — ./artifacts/product-requirements.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -352,7 +352,7 @@ Use the actual current local PST time. If unsure of the timezone, ask once and r
 Read `./artifacts/toolchain.md` if it exists. Two destinations are relevant here:
 
 - **Docs / wiki** (Confluence, Notion, Google Docs) → for the full product-requirements doc.
-- **Issue tracker** (GitHub Issues, Jira, Linear, Asana) → for the feature tiers as an epic / parent issue (children get created later by `/product-13-backlog`).
+- **Issue tracker** (GitHub Issues, Jira, Linear, Asana) → for the feature tiers as an epic / parent issue (children get created later by `/13-backlog`).
 
 If either is named AND its MCP is available, offer the corresponding push: "Want me to publish product-requirements.md to your <docs tool>?" and/or "Want me to create the MVP epic in your <issue tracker> so backlog items can be attached to it?" If yes, push as additive sync and add a `published_url:` / `epic_url:` reference near the top of the local file. Local markdown remains source of truth.
 
@@ -365,7 +365,7 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next:
-> - `/product-10-access-patterns` — define how the data will be queried (which drives the data model).
-> - Or `/product-7-stress-test ./artifacts/product-requirements.md` if prioritization felt soft, business dependencies look incomplete, or open questions feel load-bearing.
+> - `/10-access-patterns` — define how the data will be queried (which drives the data model).
+> - Or `/7-stress-test ./artifacts/product-requirements.md` if prioritization felt soft, business dependencies look incomplete, or open questions feel load-bearing.
 >
-> Then: `/product-11-data-model`, `/product-12-prebuild-qa`, `/product-13-backlog`.
+> Then: `/11-data-model`, `/12-prebuild-qa`, `/13-backlog`.

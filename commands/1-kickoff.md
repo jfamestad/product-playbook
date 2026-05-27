@@ -2,7 +2,7 @@
 description: Capture durable principles, team toolchain, and tech stack. Writes ./artifacts/principles.md and ./artifacts/toolchain.md.
 ---
 
-# /product-1-kickoff
+# /1-kickoff
 
 You are helping the user lock in three things at the start of this product:
 
@@ -58,7 +58,7 @@ The first 5 are the playbook's core. The last 2 (customer-obsession and truth-se
 ### Principle 4 — Antagonist gates are cheap
 **What it means:** A 30-minute multi-POV review at PRFAQ and MVP-scope is the highest-ROI time in the whole sequence. Finding a fatal flaw at PRFAQ costs hours; finding it post-launch costs the company.
 
-**How it applies:** `/product-7-stress-test` is gated *into* the flow at phase 2 and phase 5. It can also run ad-hoc on any artifact.
+**How it applies:** `/7-stress-test` is gated *into* the flow at phase 2 and phase 5. It can also run ad-hoc on any artifact.
 
 **Why it matters:** Don't let people skip it because "we already talked through the risks." Talked-through ≠ POV-rotated.
 
@@ -85,7 +85,7 @@ The first 5 are the playbook's core. The last 2 (customer-obsession and truth-se
 ### Principle 7 — Truth-seeking over selling
 **What it means:** Reviews exist to find what's wrong, not to get approval. The most valuable PRFAQ review surfaces the assumption that, if false, kills the idea — and that's a *good* outcome, not a setback.
 
-**How it applies:** When you present a PRFAQ, MVP scope, or pricing model, frame the ask as "where am I wrong?" not "approve this." The `/product-7-stress-test` command is built around this: its job is to expose flaws while they're still cheap to fix.
+**How it applies:** When you present a PRFAQ, MVP scope, or pricing model, frame the ask as "where am I wrong?" not "approve this." The `/7-stress-test` command is built around this: its job is to expose flaws while they're still cheap to fix.
 
 **Why it matters:** Selling-mode reviews produce false confidence. Truth-seeking reviews produce products that survive contact with customers.
 
@@ -185,7 +185,7 @@ What this team uses today. Consulted by downstream commands when offering tool i
 - **CI/CD:** <value>
 
 ## Notes
-<Any caveats — e.g., "evaluating Linear vs Jira", "stack decisions pending /product-9-engineering-handoff">
+<Any caveats — e.g., "evaluating Linear vs Jira", "stack decisions pending /9-engineering-handoff">
 ```
 
 Confirm with the user before writing.
@@ -195,12 +195,12 @@ Confirm with the user before writing.
 Append two lines to `./artifacts/product-log.md`:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-1-kickoff — ./artifacts/principles.md
-YYYY-MM-DD HH:MM PST — /product-1-kickoff — ./artifacts/toolchain.md
+YYYY-MM-DD HH:MM PST — /1-kickoff — ./artifacts/principles.md
+YYYY-MM-DD HH:MM PST — /1-kickoff — ./artifacts/toolchain.md
 ```
 
-Use the actual current local PST time. Create the log file with a header if it doesn't exist yet (see `/product-0-intro` for the header format).
+Use the actual current local PST time. Create the log file with a header if it doesn't exist yet (see `/0-intro` for the header format).
 
 ## Step 9 — Tell them what's next
 
-Close with: "Next: `/product-2-vision` to draft the PRFAQ."
+Close with: "Next: `/2-vision` to draft the PRFAQ."

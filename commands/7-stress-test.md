@@ -2,7 +2,7 @@
 description: Multi-POV antagonist that tests the investment thesis behind a product artifact. Hunts for logical errors, omissions, hidden assumptions, planning ambiguity, and missing proofs of market/concept/viability. Writes ./artifacts/stress-tests/<target>-<date>.md.
 ---
 
-# /product-7-stress-test [target]
+# /7-stress-test [target]
 
 You are running the antagonist gate. At this stage in the playbook, the team has a clear vision. The question to answer is: **is the opportunity real?**
 
@@ -36,9 +36,9 @@ Open with this orientation:
 
 The command may be called with an explicit target:
 
-- `/product-7-stress-test ./artifacts/PRFAQ.md` — explicit path
-- `/product-7-stress-test mvp-scope` — short name (resolves to `./artifacts/mvp-scope.md`)
-- `/product-7-stress-test` — no arg
+- `/7-stress-test ./artifacts/PRFAQ.md` — explicit path
+- `/7-stress-test mvp-scope` — short name (resolves to `./artifacts/mvp-scope.md`)
+- `/7-stress-test` — no arg
 
 Resolution rules:
 
@@ -262,7 +262,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-7-stress-test — ./artifacts/stress-tests/<target>-<date>.md — <Recommendation>
+YYYY-MM-DD HH:MM PST — /7-stress-test — ./artifacts/stress-tests/<target>-<date>.md — <Recommendation>
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -272,13 +272,13 @@ Use the actual current local PST time. If unsure of the timezone, ask once and r
 Branch based on recommendation:
 
 - **Proceed:**
-  > Next: continue to the next playbook phase. If you just stress-tested PRFAQ → `/product-3-gtm`. If you just stress-tested MVP scope → `/product-8-go-no-go` (the explicit commitment to build, before engineering handoff).
+  > Next: continue to the next playbook phase. If you just stress-tested PRFAQ → `/3-gtm`. If you just stress-tested MVP scope → `/8-go-no-go` (the explicit commitment to build, before engineering handoff).
 
 - **Proceed with changes:**
-  > Next: address the must-fix items in the block-and-tackle list. Re-run the upstream command(s) where needed (e.g., `/product-2-vision` if PRFAQ needs revision). Then continue.
+  > Next: address the must-fix items in the block-and-tackle list. Re-run the upstream command(s) where needed (e.g., `/2-vision` if PRFAQ needs revision). Then continue.
 
 - **Pause:**
   > Next: name the experiment that resolves the load-bearing assumption(s). Run it. Do not proceed to the next phase until the experiment returns a result that either confirms the assumption or kills the thesis.
 
 - **Kill:**
-  > Next: consider a pivot (which kept assumptions could form a different thesis?) or close the project cleanly. If pivoting, restart from `/product-2-vision` with the new direction.
+  > Next: consider a pivot (which kept assumptions could form a different thesis?) or close the project cleanly. If pivoting, restart from `/2-vision` with the new direction.

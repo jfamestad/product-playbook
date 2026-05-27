@@ -2,7 +2,7 @@
 description: Orient the user in the product-playbook process — phases, principles, what to expect. No artifact written.
 ---
 
-# /product-0-intro
+# /0-intro
 
 You are orienting a builder who is about to walk through the product-playbook process. They may be solo, may have a small team, may be working with an AI team. Your job is to leave them knowing:
 
@@ -34,27 +34,27 @@ A repeatable sequence for taking a product idea from "I think there's something 
 
 | # | Command | What you walk out with |
 |---|---|---|
-| 0 | `/product-0-intro` | (this) orientation |
-| 1 | `/product-1-kickoff` | Durable principles + team toolchain + tech stack |
-| 2 | `/product-2-vision` | PRFAQ + one-pager (PRFAQ first, then iterate with feedback, then the one-pager) |
-| 3 | `/product-3-gtm` | Named first-three customers + GTM plan |
-| 4 | `/product-4-design` | Design direction — user flows, IA, design language |
-| 5 | `/product-5-mvp-scope` | Defensible MVP scope with numbers |
-| 6 | `/product-6-roles` | Solution roles, user groups, permissions, operational features |
-| 7 | `/product-7-stress-test` | Multi-POV antagonist review of any prior artifact |
-| 8 | `/product-8-go-no-go` | Explicit Go / Go-with-changes / Pause / Kill commitment with named decider |
-| 9 | `/product-9-engineering-handoff` | Product requirements doc (`product-requirements.md`) for engineering |
-| 10 | `/product-10-access-patterns` | Access patterns that will drive the data model |
-| 11 | `/product-11-data-model` | Single-table design defended by access patterns |
-| 12 | `/product-12-prebuild-qa` | The 13 pre-build questions answered |
-| 13 | `/product-13-backlog` | Buildable backlog as local markdown — offers to push to your issue tracker if named |
-| — | `/product-status` | Read the log; see where you are |
+| 0 | `/0-intro` | (this) orientation |
+| 1 | `/1-kickoff` | Durable principles + team toolchain + tech stack |
+| 2 | `/2-vision` | PRFAQ + one-pager (PRFAQ first, then iterate with feedback, then the one-pager) |
+| 3 | `/3-gtm` | Named first-three customers + GTM plan |
+| 4 | `/4-design` | Design direction — user flows, IA, design language |
+| 5 | `/5-mvp-scope` | Defensible MVP scope with numbers |
+| 6 | `/6-roles` | Solution roles, user groups, permissions, operational features |
+| 7 | `/7-stress-test` | Multi-POV antagonist review of any prior artifact |
+| 8 | `/8-go-no-go` | Explicit Go / Go-with-changes / Pause / Kill commitment with named decider |
+| 9 | `/9-engineering-handoff` | Product requirements doc (`product-requirements.md`) for engineering |
+| 10 | `/10-access-patterns` | Access patterns that will drive the data model |
+| 11 | `/11-data-model` | Single-table design defended by access patterns |
+| 12 | `/12-prebuild-qa` | The 13 pre-build questions answered |
+| 13 | `/13-backlog` | Buildable backlog as local markdown — offers to push to your issue tracker if named |
+| — | `/status` | Read the log; see where you are |
 
-`/product-7-stress-test` runs at two natural gates — after `/product-2-vision` (PRFAQ) and after `/product-5-mvp-scope`. It can also run ad-hoc on any artifact.
+`/7-stress-test` runs at two natural gates — after `/2-vision` (PRFAQ) and after `/5-mvp-scope`. It can also run ad-hoc on any artifact.
 
 ### The 5 principles
 
-These govern every phase. `/product-1-kickoff` will walk you through them and let you adopt, edit, or add.
+These govern every phase. `/1-kickoff` will walk you through them and let you adopt, edit, or add.
 
 1. **Artifacts > conversation.** Every phase produces a named file. If the file doesn't exist, the phase isn't done.
 2. **Numbers > adjectives.** "$300/mo data budget, 3 metros, ship by July 15" resists drift. "Lean and focused" doesn't.
@@ -69,13 +69,13 @@ Each command does three things in order:
 2. **Guides** you through the decisions that need to be made
 3. **Processes** your responses into an artifact under `./artifacts/`
 
-Every command appends a line to `./artifacts/product-log.md` with the timestamp (local PST) and the artifact produced. Run `/product-status` any time to see where you are.
+Every command appends a line to `./artifacts/product-log.md` with the timestamp (local PST) and the artifact produced. Run `/status` any time to see where you are.
 
 ### What to do next
 
-If `./artifacts/` is empty: run `/product-1-kickoff` to capture your principles.
+If `./artifacts/` is empty: run `/1-kickoff` to capture your principles.
 
-If `./artifacts/principles.md` exists: run `/product-status` to see where you left off, then continue from there.
+If `./artifacts/principles.md` exists: run `/status` to see where you left off, then continue from there.
 
 ## Step 3 — Do NOT write an artifact
 
@@ -94,7 +94,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append a single line:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-0-intro — orientation delivered
+YYYY-MM-DD HH:MM PST — /0-intro — orientation delivered
 ```
 
 Use the actual current local PST time. If you cannot determine the timezone, ask the user which timezone to use and remember it for future log entries.

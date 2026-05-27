@@ -2,7 +2,7 @@
 description: Draw the data model defended by the access patterns — entity ER view, physical single-table layout with example object instances, query implementations, lifecycle decisions, and migration plan for deferred features. Writes ./artifacts/data-model.md.
 ---
 
-# /product-11-data-model
+# /11-data-model
 
 You are helping the user produce the data model that the application will be built on. The model is **defended by the access patterns** from `/product-9` — if a structural choice doesn't serve a real access pattern, it doesn't belong.
 
@@ -40,7 +40,7 @@ Open with this orientation:
 Required upstream artifact:
 - `./artifacts/access-patterns.md` — the patterns the model must satisfy
 
-If missing, **block**: a data model without enumerated access patterns produces fiction. Recommend `/product-10-access-patterns` first.
+If missing, **block**: a data model without enumerated access patterns produces fiction. Recommend `/10-access-patterns` first.
 
 Useful:
 - `./artifacts/product-requirements.md` — entity context, feature constraints
@@ -364,7 +364,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-11-data-model — ./artifacts/data-model.md
+YYYY-MM-DD HH:MM PST — /11-data-model — ./artifacts/data-model.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -374,5 +374,5 @@ Use the actual current local PST time. If unsure of the timezone, ask once and r
 Close with:
 
 > Next:
-> - `/product-12-prebuild-qa` — answer the 12 pre-build questions before engineering starts.
-> - Or `/product-7-stress-test ./artifacts/data-model.md` if the GSI count felt high, the migration plan had any re-architecture flags, or lifecycle decisions were deferred. Technical + Operator POVs are sharpest here.
+> - `/12-prebuild-qa` — answer the 12 pre-build questions before engineering starts.
+> - Or `/7-stress-test ./artifacts/data-model.md` if the GSI count felt high, the migration plan had any re-architecture flags, or lifecycle decisions were deferred. Technical + Operator POVs are sharpest here.

@@ -2,7 +2,7 @@
 description: Lock the crisp ICP + market definition, deep-dive the top 3 named beta customers (contacts, approach, value), sketch pricing v0.1 + ROI, and define kill criteria. Writes ./artifacts/gtm-plan.md.
 ---
 
-# /product-3-gtm
+# /3-gtm
 
 You are helping the user turn a PRFAQ's first-three customers from "named on paper" into "contactable, approachable, sellable." This is the phase that separates a *good idea* from an *actionable idea with a path to a market*.
 
@@ -28,7 +28,7 @@ Open with this orientation:
 
 ## Step 2 — Read context
 
-Required upstream artifact: `./artifacts/PRFAQ.md`. If it doesn't exist, **block**: tell the user GTM depends on PRFAQ and recommend running `/product-2-vision` first. Don't proceed without it.
+Required upstream artifact: `./artifacts/PRFAQ.md`. If it doesn't exist, **block**: tell the user GTM depends on PRFAQ and recommend running `/2-vision` first. Don't proceed without it.
 
 Optional but useful:
 - `./artifacts/one-pager.md` — read for ICP/segment language consistency.
@@ -228,7 +228,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-3-gtm — ./artifacts/gtm-plan.md
+YYYY-MM-DD HH:MM PST — /3-gtm — ./artifacts/gtm-plan.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -251,8 +251,8 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next, either:
-> - `/product-7-stress-test ./artifacts/gtm-plan.md` — multi-POV antagonist (Customer + Sponsor POVs are sharpest here). Strongly recommended before committing outreach.
-> - `/product-4-design` — translate the validated GTM and vision into design direction (user flows, IA, design language) before scoping the MVP.
-> - Then `/product-5-mvp-scope` — define the defensible MVP scope with numbers, knowing who you're building for.
+> - `/7-stress-test ./artifacts/gtm-plan.md` — multi-POV antagonist (Customer + Sponsor POVs are sharpest here). Strongly recommended before committing outreach.
+> - `/4-design` — translate the validated GTM and vision into design direction (user flows, IA, design language) before scoping the MVP.
+> - Then `/5-mvp-scope` — define the defensible MVP scope with numbers, knowing who you're building for.
 
 Recommend the stress-test first if any of these are true: ICP felt vague, top-3 contacts were not real humans, pricing had no anchor, or kill criteria were soft.

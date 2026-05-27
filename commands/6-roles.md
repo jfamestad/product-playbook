@@ -2,7 +2,7 @@
 description: Decide solution roles, user groups/tenancy, permissions, and operational features for the MVP. Repeatable conversation framework — each area asks "in MVP or deferred?", and "deferred + manual workaround" is a valid answer. Writes ./artifacts/roles.md.
 ---
 
-# /product-6-roles
+# /6-roles
 
 You are helping the user decide what role structure, tenancy model, permissions, and operational features the MVP needs. The trap this phase prevents: silent assumption that "of course we need an admin panel / audit log / SSO / etc." Those are real features with real cost. Each one must earn its place at MVP — or be explicitly deferred with a manual workaround.
 
@@ -16,10 +16,10 @@ This phase is **a conversation, not a checklist**. Four areas, each walked with 
 "Out at MVP" is a valid, expected answer for most rows. The artifact records both what's IN and what's OUT (with the workaround) so nothing is silently assumed.
 
 Outputs feed downstream:
-- `/product-7-stress-test` may attack the role/tenancy model
-- `/product-9-engineering-handoff` carries the in-scope features forward as engineering work
-- `/product-10-access-patterns` derives security queries and tenancy model from this
-- `/product-11-data-model` derives the org/user/role entities from this
+- `/7-stress-test` may attack the role/tenancy model
+- `/9-engineering-handoff` carries the in-scope features forward as engineering work
+- `/10-access-patterns` derives security queries and tenancy model from this
+- `/11-data-model` derives the org/user/role entities from this
 
 ---
 
@@ -38,7 +38,7 @@ Open with this orientation:
 Required upstream artifact:
 - `./artifacts/mvp-scope.md` — the IN/OUT lists; constraints
 
-If missing, **block**: deciding roles without a locked scope produces over-built fiction. Recommend `/product-5-mvp-scope` first.
+If missing, **block**: deciding roles without a locked scope produces over-built fiction. Recommend `/5-mvp-scope` first.
 
 Strongly recommended:
 - `./artifacts/gtm-plan.md` — the top-3 customers shape what "tenant" actually means. A solo operator and an enterprise team imply very different role models.
@@ -92,7 +92,7 @@ For each in-scope role:
 
 The question to answer: **what's a tenant, and how do users join one?**
 
-This is the load-bearing decision for everything downstream. Get it right here or pay later in `/product-10-access-patterns` and `/product-11-data-model`.
+This is the load-bearing decision for everything downstream. Get it right here or pay later in `/10-access-patterns` and `/11-data-model`.
 
 ### 4.1 What is a tenant?
 Define it in plain English. Common shapes:
@@ -221,7 +221,7 @@ Customer can delete their tenant and all associated data.
 
 Default at MVP: **manual.** Workaround: customer emails us, we run a script. Re-eval trigger: GDPR/CCPA scope, or customer needs self-serve deletion before signing.
 
-Capture the deletion semantics: hard delete, soft delete + N-day retention, archive-then-purge. This decision propagates to `/product-11-data-model` lifecycle decisions.
+Capture the deletion semantics: hard delete, soft delete + N-day retention, archive-then-purge. This decision propagates to `/11-data-model` lifecycle decisions.
 
 ### 6.7 Org settings
 - SSO (SAML, OIDC)
@@ -239,7 +239,7 @@ The business-level sign-on decision (not the technology — that's an implementa
 - Default at MVP: pick one that covers the top-3 customers; defer the rest.
 - Account recovery: how does a user reset access?
 
-This decision propagates into `/product-10-access-patterns` (auth queries) and `/product-12-prebuild-qa` (where the technology choice is made).
+This decision propagates into `/10-access-patterns` (auth queries) and `/12-prebuild-qa` (where the technology choice is made).
 
 ## Step 7 — Out-of-scope (defer list)
 
@@ -259,14 +259,14 @@ Call out explicitly what this artifact pushes downstream — so the user sees th
 ```
 ## Feeds downstream
 
-- **`/product-7-stress-test`** (if invoked on this artifact): Customer + Sponsor + Operator POVs are sharpest. Watch for "this tenancy model breaks at customer #2" and "this operational deferral becomes a fire at first scale event."
-- **`/product-9-engineering-handoff`**: in-scope operational features become engineering work items with prioritization tier.
-- **`/product-10-access-patterns`**:
+- **`/7-stress-test`** (if invoked on this artifact): Customer + Sponsor + Operator POVs are sharpest. Watch for "this tenancy model breaks at customer #2" and "this operational deferral becomes a fire at first scale event."
+- **`/9-engineering-handoff`**: in-scope operational features become engineering work items with prioritization tier.
+- **`/10-access-patterns`**:
   - Tenancy model → partitioning strategy
   - Roles + capabilities → permission-check queries
   - Sign-on choice → auth queries
   - Multi-tenant decision → cross-tenant prevention plan
-- **`/product-11-data-model`**:
+- **`/11-data-model`**:
   - Tenant entity (Org, Workspace, etc.)
   - User entity + tenant membership
   - Role entity (if multi-role)
@@ -377,14 +377,14 @@ Use this structure exactly:
 
 ## Feeds downstream
 
-- **`/product-7-stress-test`**: Customer + Sponsor + Operator POVs sharpest here.
-- **`/product-9-engineering-handoff`**: in-scope operational features become engineering work items.
-- **`/product-10-access-patterns`**:
+- **`/7-stress-test`**: Customer + Sponsor + Operator POVs sharpest here.
+- **`/9-engineering-handoff`**: in-scope operational features become engineering work items.
+- **`/10-access-patterns`**:
   - Tenancy model → partitioning strategy
   - Roles + capabilities → permission-check queries
   - Sign-on choice → auth queries
   - Multi-tenant decision → cross-tenant prevention plan
-- **`/product-11-data-model`**:
+- **`/11-data-model`**:
   - Tenant, User, Role, Audit-log entities (those that are in scope)
   - Deletion semantics → lifecycle decisions per entity
 ```
@@ -404,7 +404,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-6-roles — ./artifacts/roles.md
+YYYY-MM-DD HH:MM PST — /6-roles — ./artifacts/roles.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -424,6 +424,6 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next:
-> - `/product-7-stress-test ./artifacts/mvp-scope.md` — the natural antagonist gate after scope + roles. Lineup: Sponsor, Technical, Operator, Customer. The Operator POV will hammer at the operational-deferrals list, which is exactly the cheap-to-fix-now feedback you want.
-> - Or `/product-7-stress-test ./artifacts/roles.md` directly if the tenancy model, permission matrix, or operational-deferrals list felt soft on its own. Customer + Sponsor + Operator POVs are sharpest.
-> - Then `/product-9-engineering-handoff` to package scope + roles for build.
+> - `/7-stress-test ./artifacts/mvp-scope.md` — the natural antagonist gate after scope + roles. Lineup: Sponsor, Technical, Operator, Customer. The Operator POV will hammer at the operational-deferrals list, which is exactly the cheap-to-fix-now feedback you want.
+> - Or `/7-stress-test ./artifacts/roles.md` directly if the tenancy model, permission matrix, or operational-deferrals list felt soft on its own. Customer + Sponsor + Operator POVs are sharpest.
+> - Then `/9-engineering-handoff` to package scope + roles for build.

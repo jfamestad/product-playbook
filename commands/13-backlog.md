@@ -2,7 +2,7 @@
 description: Turn the resolved upstream artifacts into a buildable backlog of work items as local markdown. Then offer to push to the team's issue tracker (GitHub Issues, Jira, Linear, Asana) if named in toolchain.md and the vendor MCP is available. Writes ./artifacts/backlog/.
 ---
 
-# /product-13-backlog
+# /13-backlog
 
 You are converting the resolved upstream artifacts into a **buildable backlog** — discrete work items a developer (human or AI) can pick up and execute without re-deriving context. The backlog is the bridge from "we know what we're building" to "we're building it."
 
@@ -20,7 +20,7 @@ Open with:
 
 Required:
 - `./artifacts/mvp-scope.md` — what's IN
-- `./artifacts/product-requirements.md` — the requirements doc from `/product-9-engineering-handoff`
+- `./artifacts/product-requirements.md` — the requirements doc from `/9-engineering-handoff`
 - `./artifacts/prebuild-qa.md` — the 13 questions answered
 
 Helpful:
@@ -136,7 +136,7 @@ Write all items. Confirm the count and structure with the user before moving on.
 Append to `./artifacts/product-log.md`:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-13-backlog — ./artifacts/backlog/ (N items)
+YYYY-MM-DD HH:MM PST — /13-backlog — ./artifacts/backlog/ (N items)
 ```
 
 Use the actual current local PST time. Create the log file with a header if it doesn't exist yet.
@@ -162,7 +162,7 @@ If the user accepts the push:
 2. For each item in order, create the corresponding issue/task. Include the full body from the item markdown.
 3. Add a `tracker_url:` line to the YAML/header of each local item file as it's pushed, so future re-syncs know what's already there.
 4. Update `./artifacts/backlog/index.md` with a final "Pushed to: <tool> on <date>" line.
-5. Append another log line: `YYYY-MM-DD HH:MM PST — /product-13-backlog — pushed N items to <tool>`.
+5. Append another log line: `YYYY-MM-DD HH:MM PST — /13-backlog — pushed N items to <tool>`.
 
 **Rule:** the local markdown is canonical. Future edits happen locally first, then re-push. Never edit the tracker as the source of truth.
 
@@ -172,6 +172,6 @@ If the user declines or no tool is named, skip — that's fine. The local backlo
 
 Close with the appropriate next step:
 
-- If MVP backlog is set and they're ready to build: "You're ready. Pick item 001 and start. Re-run `/product-status` any time to check progress."
-- If they want a stress test on the backlog: "Want me to run `/product-7-stress-test` on the backlog before you start? Cheap insurance."
-- If the toolchain push needs to be re-run later (e.g., they haven't picked a tracker yet): "When you pick an issue tracker, update `./artifacts/toolchain.md` and re-run `/product-13-backlog` — it'll skip the local writes and go straight to the push."
+- If MVP backlog is set and they're ready to build: "You're ready. Pick item 001 and start. Re-run `/status` any time to check progress."
+- If they want a stress test on the backlog: "Want me to run `/7-stress-test` on the backlog before you start? Cheap insurance."
+- If the toolchain push needs to be re-run later (e.g., they haven't picked a tracker yet): "When you pick an issue tracker, update `./artifacts/toolchain.md` and re-run `/13-backlog` — it'll skip the local writes and go straight to the push."

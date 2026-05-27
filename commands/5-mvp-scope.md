@@ -2,7 +2,7 @@
 description: Lock the MVP scope — IN list, explicit OUT/defer list, stands-on-own test, path-to-vision sanity check, feedback collection design, success and kill criteria. Writes ./artifacts/mvp-scope.md.
 ---
 
-# /product-5-mvp-scope
+# /5-mvp-scope
 
 You are helping the user lock the MVP scope. The MVP is a **proper subset** of the long-term product vision — it will NOT have all the promised features. It must:
 
@@ -12,7 +12,7 @@ You are helping the user lock the MVP scope. The MVP is a **proper subset** of t
 
 The discipline of this phase is **numbers, not adjectives**. "Focused" / "lean" / "small" decay; "$Y/month data budget, 3 metros, 5 beta customers, ship by July 15" doesn't. The artifact must use numbers wherever a count, a dollar, or a date can substitute for a vague word.
 
-This is the second of the playbook's two natural antagonist gates. After this command, the standard next step is `/product-7-stress-test ./artifacts/mvp-scope.md`.
+This is the second of the playbook's two natural antagonist gates. After this command, the standard next step is `/7-stress-test ./artifacts/mvp-scope.md`.
 
 ---
 
@@ -90,14 +90,14 @@ If you spot the anti-pattern, reorganize. The MVP must ship the slice that deliv
 
 ## Step 6 — Path-to-vision sanity check
 
-A quick pass (deeper architectural work happens in `/product-10-access-patterns` and `/product-11-data-model`). For each major scoping choice in the IN list:
+A quick pass (deeper architectural work happens in `/10-access-patterns` and `/11-data-model`). For each major scoping choice in the IN list:
 
 - Does adding deferred feature X later require a rewrite, or is it purely additive?
 - Are there data-model, integration, or auth choices that would make later features painful?
 
 You don't need to solve the architectural problem here — just **flag** the corner-painting risks so they get explicit attention in the architecture phases. Capture a short "watch-out" list:
 
-> Example: "MVP uses single-tenant data; multi-tenant will require migration. Flagged for /product-11-data-model."
+> Example: "MVP uses single-tenant data; multi-tenant will require migration. Flagged for /11-data-model."
 
 If no corner-painting risks are visible, write that explicitly. Don't manufacture risks for completeness.
 
@@ -144,7 +144,7 @@ Concrete metrics for end-of-MVP / end-of-beta. Examples that pass the numbers > 
 Don't accept "users love it" or "we get traction." Pick numbers.
 
 ### 8.2 Kill criteria
-Reference and extend the kill criteria from `/product-3-gtm`. Add MVP-specific ones:
+Reference and extend the kill criteria from `/3-gtm`. Add MVP-specific ones:
 
 - **Cost-to-serve floor:** at $X/customer/month, unit economics break. Below this margin, kill the unit economics (kill the product, restructure pricing, or restructure costs).
 - **Time overrun:** if MVP isn't shipped by <date> + N weeks, kill or descope further.
@@ -275,7 +275,7 @@ Append-only record of phase completions. Timestamps in local PST.
 Then append:
 
 ```
-YYYY-MM-DD HH:MM PST — /product-5-mvp-scope — ./artifacts/mvp-scope.md
+YYYY-MM-DD HH:MM PST — /5-mvp-scope — ./artifacts/mvp-scope.md
 ```
 
 Use the actual current local PST time. If unsure of the timezone, ask once and remember.
@@ -295,8 +295,8 @@ See the playbook SKILL's "Toolchain integration" convention for the full pattern
 Close with:
 
 > Next:
-> - `/product-6-roles` — define solution roles, user groups, and permissions before the stress test.
-> - `/product-7-stress-test ./artifacts/mvp-scope.md` — **strongly recommended.** This is one of the two natural antagonist gates in the playbook. POV lineup: Sponsor, Technical, Operator, Customer. The cheapest place to find a scope-shaped flaw is right now.
-> - Then `/product-9-engineering-handoff` to package the scope for build.
+> - `/6-roles` — define solution roles, user groups, and permissions before the stress test.
+> - `/7-stress-test ./artifacts/mvp-scope.md` — **strongly recommended.** This is one of the two natural antagonist gates in the playbook. POV lineup: Sponsor, Technical, Operator, Customer. The cheapest place to find a scope-shaped flaw is right now.
+> - Then `/9-engineering-handoff` to package the scope for build.
 
 Recommend the stress-test always at this gate. Mention if any of these are true in the just-written scope: more than N IN items, fuzzy OUT triggers, missing assumption-under-test mapping, or vague success/kill criteria.
