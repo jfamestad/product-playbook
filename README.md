@@ -1,8 +1,8 @@
 # product-playbook
 
-A Claude Code plugin for taking a product idea from "I think there's something here" to first paying customer and beyond. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC.
+A Claude Code plugin for taking a product idea from "I think there's something here" to a real shipped MVP. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC.
 
-14 slash commands across 13 phases (plus `/status`). Every phase produces a concrete artifact. If you don't have the artifact, the phase isn't done.
+16 slash commands across 15 phases (plus `/status`). Every phase produces a concrete artifact. If you don't have the artifact, the phase isn't done.
 
 ---
 
@@ -37,7 +37,7 @@ Commands appear under the `product-playbook:` namespace — e.g. `/product-playb
 
 ---
 
-## The 13 phases
+## The 15 phases
 
 | # | Command | What you walk out with |
 |---|---|---|
@@ -55,6 +55,8 @@ Commands appear under the `product-playbook:` namespace — e.g. `/product-playb
 | 11 | `/11-data-model` | `data-model.md` (single-table design) |
 | 12 | `/12-prebuild-qa` | `prebuild-qa.md` — 13 questions answered |
 | 13 | `/13-backlog` | `backlog/` — one item per file + index, optional push to issue tracker |
+| 14 | `/14-ui-build` | `ui-build.md` — real UI shipped with mock data, dev-server feedback loop |
+| 15 | `/15-api-build` | `api-build.md` — real APIs swapped in entity by entity, validation gate per entity |
 | — | `/status` | Read the log, see where you are. No artifact written |
 
 `/7-stress-test` is gated into the flow at two natural points (after `/2-vision` and after `/5-mvp-scope`) but can run ad-hoc on any artifact at any time.
@@ -81,6 +83,8 @@ Commands appear under the `product-playbook:` namespace — e.g. `/product-playb
 /11-data-model           # single-table design defended by patterns
 /12-prebuild-qa          # 13 pre-build questions
 /13-backlog              # buildable backlog → optional push to tracker
+/14-ui-build             # ship real UI with mock data; offer to run dev server
+/15-api-build            # swap mock for real APIs, entity by entity
 ```
 
 ### Resuming a product already in flight
@@ -129,9 +133,11 @@ Every artifact lands under `./artifacts/` (relative to your current working dire
 ├── access-patterns.md
 ├── data-model.md
 ├── prebuild-qa.md
-└── backlog/
-    ├── index.md
-    └── 001-init-repo-ci.md    # one file per work item
+├── backlog/
+│   ├── index.md
+│   └── 001-init-repo-ci.md    # one file per work item
+├── ui-build.md                # real UI + mock data spec + user-touch plan
+└── api-build.md               # API cutover plan + per-entity status log
 ```
 
 `./artifacts/product-log.md` is append-only. Each phase command writes one line: `YYYY-MM-DD HH:MM PST — /N-name — <artifact path>`. That's how `/status` reconstructs progress without any other state.

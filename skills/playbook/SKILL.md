@@ -1,11 +1,11 @@
 ---
 name: playbook
-description: Use when taking a product from "I think there's something here" to a buildable backlog. 13 commands (Phase 0–13) covering durable principles + toolchain + tech stack, PRFAQ with named first-three customers, GTM plan, design direction (via Claude Design), MVP scope with numbers, roles and tenancy and permissions, multi-POV stress test, explicit go/no-go commitment, product requirements, access-pattern-first data model, 13-question pre-build Q&A, and a buildable backlog with optional push to your team's issue tracker. Calls the `tear-it-apart` antagonist at the PRFAQ gate and the MVP-scope gate. Triggers on "new product idea", "PRFAQ", "MVP scope", "buildable backlog", "go no go", "first paying customer", "product playbook", "playbook".
+description: Use when taking a product from "I think there's something here" to a real shipped MVP. 15 commands (Phase 0–15) covering durable principles + toolchain + tech stack, PRFAQ with named first-three customers, GTM plan, design direction (via Claude Design), MVP scope with numbers, roles and tenancy and permissions, multi-POV stress test, explicit go/no-go commitment, product requirements, access-pattern-first data model, 13-question pre-build Q&A, buildable backlog with optional push to your team's issue tracker, UI build with mock data and a dev-server feedback loop, and API build that swaps mock for real entity by entity. Calls the `tear-it-apart` antagonist at the PRFAQ gate and the MVP-scope gate. Triggers on "new product idea", "PRFAQ", "MVP scope", "buildable backlog", "go no go", "first paying customer", "ship the UI", "wire the APIs", "product playbook", "playbook".
 ---
 
 # Product Playbook
 
-Take a product idea from "I think there's something here" to a buildable backlog. 13 numbered slash commands (Phase 0 through Phase 13) plus a read-only `/status` utility. Each phase produces a concrete **artifact** that unlocks the next phase. Skip nothing — weak upstream artifacts cause drift downstream.
+Take a product idea from "I think there's something here" to a real shipped MVP. 15 numbered slash commands (Phase 0 through Phase 15) plus a read-only `/status` utility. Each phase produces a concrete **artifact** that unlocks the next phase. Skip nothing — weak upstream artifacts cause drift downstream.
 
 Full long-form reference: `references/full-playbook.md`. Read it once per product if this is your first run.
 
@@ -39,7 +39,7 @@ This convention applies to every artifact-writing command. Don't build separate 
 
 **Existing artifacts.** Before overwriting, infer from the user's request whether they want to continue iterating an existing file or start fresh. Ask only if intent is genuinely unclear. Never silently overwrite.
 
-## The 13 Phases
+## The 15 Phases
 
 ### Phase 0 — `/0-intro` — Orient
 Walks the user through what the playbook is, the 12 phases, the 5 principles, and how the commands work. **Writes no artifact.** Only orients.
@@ -89,6 +89,12 @@ Translate the access-pattern list into a concrete single-table design (or equiva
 ### Phase 13 — `/13-backlog` — Buildable backlog (local + optional tracker push)
 Decompose `product-requirements.md` into discrete work items. One markdown file per item under `./artifacts/backlog/` plus an `index.md`. Each item: bucket, size (S/M/L/XL), priority (P0/P1/P2), depends-on, acceptance criteria. Then — per the Toolchain integration convention — if `toolchain.md` names an issue tracker (GitHub / Jira / Linear / Asana) and its MCP is available, offer to push the items as additive sync. Local markdown remains canonical.
 
+### Phase 14 — `/14-ui-build` — Real UI shipped with mock data behind it
+Build the production UI from `./artifacts/design/`. Behind it sits mock data whose shape matches `./artifacts/data-model.md` 1:1 — so the API swap in Phase 15 is mechanical. Specify the mock dataset per entity, classify each route as wired-to-mock vs stubbed-with-a-message, wire instrumentation for the signals from `mvp-scope.md` §7.2, and land a user-touch plan with named first-three users. The command offers to **start the dev server** for live feedback before declaring the phase done. Artifact: `./artifacts/ui-build.md`.
+
+### Phase 15 — `/15-api-build` — Replace mock with real APIs, entity by entity
+Build APIs whose response shape matches the mock 1:1. Pick wire-in order smallest-risk × smallest-surface first. Per entity: validation gate (real responses match the mock baseline), feature flag, rollback procedure, instrumentation parity. Cutover ceremony is repeatable — build, seed, validate, flip, watch, hold, promote, then remove the mock after one full first-three usage cycle on real. Artifact: `./artifacts/api-build.md`. Outcome: MVP is live on real data with the same UI users have been touching since Phase 14.
+
 ### `/status` — Read-only status check
 Reads `./artifacts/product-log.md` and inventories `./artifacts/`. Reports completed phases, open stress-test gates, and the recommended next command. Writes nothing.
 
@@ -107,7 +113,7 @@ Two optional principles from the Working Backwards / PRFAQ tradition are also su
 
 ## Final Artifact Inventory
 
-By end of Phase 12, `./artifacts/` looks roughly like:
+By end of Phase 15, `./artifacts/` looks roughly like:
 
 ```
 ./artifacts/
@@ -121,15 +127,17 @@ By end of Phase 12, `./artifacts/` looks roughly like:
 ├── design/index.md             # Phase 4 (integrated)
 ├── mvp-scope.md                # Phase 5
 ├── roles.md                    # Phase 6
-├── stress-test-PRFAQ.md        # Phase 7 (gate 1)
-├── stress-test-mvp-scope.md    # Phase 7 (gate 2)
-├── product-requirements.md     # Phase 8
-├── access-patterns.md          # Phase 9
-├── data-model.md               # Phase 10
-├── prebuild-qa.md              # Phase 11
-└── backlog/                    # Phase 12
-    ├── index.md
-    └── NNN-<slug>.md           # one per work item
+├── stress-tests/               # Phase 7 (any number of runs)
+├── go-no-go.md                 # Phase 8
+├── product-requirements.md     # Phase 9
+├── access-patterns.md          # Phase 10
+├── data-model.md               # Phase 11
+├── prebuild-qa.md              # Phase 12
+├── backlog/                    # Phase 13
+│   ├── index.md
+│   └── NNN-<slug>.md           # one per work item
+├── ui-build.md                 # Phase 14
+└── api-build.md                # Phase 15
 ```
 
 If a tracker push happened in Phase 12, item files also carry a `tracker_url:` reference.

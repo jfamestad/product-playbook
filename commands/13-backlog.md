@@ -172,6 +172,6 @@ If the user declines or no tool is named, skip — that's fine. The local backlo
 
 Close with the appropriate next step:
 
-- If MVP backlog is set and they're ready to build: "You're ready. Pick item 001 and start. Re-run `/status` any time to check progress."
+- If MVP backlog is set and they're ready to build: "Next: `/14-ui-build` — ship the real UI with mock data behind it. The 1:1 mock-data spec is what makes the API swap mechanical later."
 - If they want a stress test on the backlog: "Want me to run `/7-stress-test` on the backlog before you start? Cheap insurance."
 - If the toolchain push needs to be re-run later (e.g., they haven't picked a tracker yet): "When you pick an issue tracker, update `./artifacts/toolchain.md` and re-run `/13-backlog` — it'll skip the local writes and go straight to the push."

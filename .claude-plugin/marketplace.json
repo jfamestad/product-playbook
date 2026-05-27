@@ -8,7 +8,7 @@
     {
       "name": "product-playbook",
       "source": "./",
-      "description": "13-phase product playbook for solo builders and small teams — idea to buildable backlog — with an explicit go/no-go gate and optional toolchain push via vendor MCPs."
+      "description": "15-phase product playbook for solo builders and small teams — idea to a real shipped MVP — with an explicit go/no-go gate, real UI build with mock data and dev-server feedback, and an API cutover phase. Optional toolchain push via vendor MCPs."
     }
   ]
 }

@@ -36,6 +36,8 @@ List `./artifacts/` (one level deep, plus relevant subdirectories: `design-seed/
 | 11 | `data-model.md` |
 | 12 | `prebuild-qa.md` |
 | 13 | `backlog/index.md` + item files |
+| 14 | `ui-build.md` |
+| 15 | `api-build.md` |
 
 Note any artifact present without a corresponding log entry, and any log entry whose artifact is missing. Both are mild signals — surface them but don't gate on them.
 
@@ -89,7 +91,9 @@ Adapt for the actual state. Guidance:
   - If go/no-go = Pause → tell the user what signal they're waiting for (from go-no-go.md) and stop recommending phase progression.
   - If go/no-go = Kill → tell the user the project is closed; suggest archiving `./artifacts/`.
   - Otherwise → the next phase in playbook order.
-  - If everything is done → "Pick item 001 from `./artifacts/backlog/index.md` and start building."
+  - If `/13-backlog` is done but `/14-ui-build` hasn't run → recommend `/14-ui-build`.
+  - If `ui-build.md` exists but `api-build.md` doesn't → recommend `/15-api-build`.
+  - If everything is done → "MVP is on real APIs. Watch the signals from `mvp-scope.md` §7.2 and iterate from there."
 - **Anomalies** — only include the section if there's something to flag (stray files, missing artifacts for logged phases, etc.). Omit the section header otherwise.
 
 ## Step 4 — Do NOT write anything

@@ -7,7 +7,7 @@ description: Orient the user in the product-playbook process — phases, princip
 You are orienting a builder who is about to walk through the product-playbook process. They may be solo, may have a small team, may be working with an AI team. Your job is to leave them knowing:
 
 1. What the playbook is for
-2. The 13 phases and what each produces
+2. The 15 phases and what each produces
 3. The 6 principles that govern the work
 4. How to use the slash commands
 5. What to do next
@@ -30,7 +30,7 @@ Walk through these five sections in order. Be concise. The whole thing should fi
 
 A repeatable sequence for taking a product idea from "I think there's something here" to first paying customer and beyond. Sized for one or two builders plus an AI team. Not a heavyweight enterprise PDLC. Every phase produces a concrete artifact — if you don't have the artifact, the phase isn't done.
 
-### The 13 phases
+### The 15 phases
 
 | # | Command | What you walk out with |
 |---|---|---|
@@ -48,6 +48,8 @@ A repeatable sequence for taking a product idea from "I think there's something 
 | 11 | `/11-data-model` | Single-table design defended by access patterns |
 | 12 | `/12-prebuild-qa` | The 13 pre-build questions answered |
 | 13 | `/13-backlog` | Buildable backlog as local markdown — offers to push to your issue tracker if named |
+| 14 | `/14-ui-build` | Real UI shipped with mock data behind it — offers to start the dev server for live feedback |
+| 15 | `/15-api-build` | Real APIs swapped in entity by entity, validation gate per entity |
 | — | `/status` | Read the log; see where you are |
 
 `/7-stress-test` runs at two natural gates — after `/2-vision` (PRFAQ) and after `/5-mvp-scope`. It can also run ad-hoc on any artifact.
