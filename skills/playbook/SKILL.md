@@ -92,7 +92,7 @@ Decompose `product-requirements.md` into discrete work items. One markdown file 
 ### `/status` — Read-only status check
 Reads `./artifacts/product-log.md` and inventories `./artifacts/`. Reports completed phases, open stress-test gates, and the recommended next command. Writes nothing.
 
-## The 5 Principles
+## The 6 Principles
 
 Surfaced in `/1-kickoff`. User adopts, edits, drops, or adds.
 
@@ -101,6 +101,7 @@ Surfaced in `/1-kickoff`. User adopts, edits, drops, or adds.
 3. **Mock data is a schema spec.** Every field in a prototype maps 1:1 to a real entity at MVP. The cutover is mechanical when this holds.
 4. **Antagonist gates are cheap.** A 30-minute multi-POV review at PRFAQ and MVP-scope is the highest-ROI time in the whole sequence.
 5. **Surface assumptions, give an override.** When the playbook (or your product) picks a default, flag it as a guess and let the user override in two clicks.
+6. **Working MVP > pre-build research.** With an AI team, the cost of a thin slice has collapsed. Default to shipping a slice to the named first-three and watching what they do. Reserve pre-build discovery for genuinely large builds, binary kill-the-project assumptions, or cases where the named first-three aren't real yet.
 
 Two optional principles from the Working Backwards / PRFAQ tradition are also surfaced as defaults in `/1-kickoff`: **Customer obsession** (start from the pain, not the solution) and **Truth-seeking over selling** (reviews exist to find what's wrong, not to get approval).
 

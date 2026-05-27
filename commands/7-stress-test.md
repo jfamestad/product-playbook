@@ -115,7 +115,7 @@ For each POV in turn, produce this structured output. Be specific. Quote the art
 
 Each POV owns a specific *proof* to check. When that proof is absent or weak, the POV calls it out.
 
-- **Customer** → **Proof of demand.** Would real customers pull this off the shelf? Is there evidence they want it (interviews, signups, prior product attempts, search behavior)? Or is demand assumed?
+- **Customer** → **Proof of demand.** Would real customers pull this off the shelf? Is there evidence they want it (named first-three with a specific reason each would say yes, prior product attempts, observed workarounds, search behavior)? Or is demand assumed? **Bias toward shipping a working slice to the named first-three over running more discovery.** Recommend pre-build customer research only when (a) the build is genuinely large, (b) a single binary assumption would kill the project and a brief conversation could resolve it, or (c) the named first-three aren't real yet. Otherwise the cheapest proof of demand is real usage.
 - **Market** → **Proof of market.** Is the TAM/SAM real, defensible, and growing? Are the sizing assumptions sourceable? Are competitors validating the market — or is the absence of competitors a signal there's no market?
 - **Sponsor** → **Proof of viability.** Do the unit economics survive scrutiny? Payback period? Margins at v0.1 pricing? ROI sensitivity to the riskiest assumption? Capital intensity?
 - **Technical** → **Proof of concept.** Can this actually be built? Scaled? Integrated? What's the build cost, and is it tractable? For AI products: is the eval/quality risk real, and how is it being mitigated?
@@ -150,12 +150,14 @@ A clean two-column summary:
 
 ## Step 8 — Block-and-tackle
 
-For each top flaw (from convergent flaws + strongest theory of failure), write a concrete move:
+For each top flaw (from convergent flaws + strongest theory of failure), write a concrete move.
+
+**Bias the move toward shipping.** With an AI-augmented team, the cost of building a thin slice has collapsed; "ship a slice to the named first-three and watch what they do" is usually cheaper and more informative than "interview 20 customers" or "build a landing page and measure conversion." Prefer pre-build research only when the build is genuinely large, the assumption is binary, the discovery cost is far below the build cost, OR the named first-three don't exist yet.
 
 - **Flaw:** <restate>
-- **Move:** <specific action — interview N customers, build N prototype, source M data, etc.>
+- **Move:** <specific action — prefer "ship a slice to N named users and instrument X," "let the first-three use the prototype for one week and capture three structured sessions," "add instrumentation Y to the MVP so the assumption becomes measurable." Use "interview N customers" or "build a landing page" only when shipping a slice is genuinely more expensive than the discovery.>
 - **Owner:** <named person — not "the team">
-- **How you'd know it worked:** <what signal closes the flaw>
+- **How you'd know it worked:** <what signal closes the flaw — prefer observed-behavior signals from real usage over self-reported survey answers>
 
 These become the must-do list before moving forward.
 

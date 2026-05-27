@@ -113,13 +113,14 @@ From the PRFAQ Internal FAQ, which assumptions does this MVP validate or falsify
 - "Cost-to-serve scales sublinearly with customer count."
 
 ### 7.2 Signals collected
-For each assumption, what signal would update our belief?
+For each assumption, what signal would update our belief? Prefer observed-behavior signals from real usage over self-reported survey answers — what users *do* in the product beats what they *say* in an interview.
 
-- **Instrumented metrics:** name the specific events / counters / dashboards.
-- **Customer interviews:** cadence (every 2 weeks? after each beta cohort?), interview owner, sample interview questions.
-- **In-app feedback:** mechanism (NPS prompt? feedback widget? scheduled check-in?).
+- **Instrumented metrics (primary):** name the specific events / counters / dashboards. These should be live from day one of beta.
+- **In-app feedback (primary):** mechanism (thumbs up/down on key outputs, feedback widget tied to specific actions, scheduled check-in at workflow completion).
+- **Recorded sessions / direct support touch (primary):** session replays or shadow-the-user calls when a key flow is exercised — far higher signal than a scheduled interview.
 - **Churn / cancellation signals:** what we capture when someone leaves.
 - **Willingness-to-pay signal:** how do we test pricing during beta? Direct ask? Price test? Both?
+- **Customer interviews (secondary):** light cadence (e.g., a 20-minute call after the first week of usage) — used to interpret behavior, not as the primary signal.
 
 ### 7.3 Collection ownership
 Named person on our side who runs feedback collection. Not "the team." One human accountable for synthesizing signal → decisions.

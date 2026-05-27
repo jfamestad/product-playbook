@@ -22,7 +22,7 @@ Open with this orientation (concise — the user wants to get to the decisions):
 
 Then check: do `./artifacts/principles.md` or `./artifacts/toolchain.md` already exist? If yes, infer from the user's request what they want — if they said "redo my principles" or "starting over," proceed fresh; if they said "let's continue" or context implies resuming, open the file and walk through changes. **Ask only if the user's intent is genuinely unclear.** Never silently overwrite.
 
-## Step 2 — Walk the 7 example principles
+## Step 2 — Walk the 8 example principles
 
 Present them one by one. For each, give the principle, what it means, and how it shows up in practice. Then ask three things: **adopt as-is, edit, or drop?**
 
@@ -88,6 +88,15 @@ The first 5 are the playbook's core. The last 2 (customer-obsession and truth-se
 **How it applies:** When you present a PRFAQ, MVP scope, or pricing model, frame the ask as "where am I wrong?" not "approve this." The `/7-stress-test` command is built around this: its job is to expose flaws while they're still cheap to fix.
 
 **Why it matters:** Selling-mode reviews produce false confidence. Truth-seeking reviews produce products that survive contact with customers.
+
+→ Adopt as-is, edit, or drop?
+
+### Principle 8 — Working MVP > pre-build research
+**What it means:** When the MVP is reachable in days-to-weeks with an AI-augmented team, a working slice in a real user's hands beats more interviews, more landing-page signups, and more discovery research. The cheapest way to learn whether the product is wanted is to let people try it.
+
+**How it applies:** The stress-test and go/no-go gates exist to catch fatal flaws — not to manufacture extra customer-development steps before a build that's already cheap. When the antagonist proposes "interview 20 customers" or "build a landing page and measure conversion" as block-and-tackle work, default to "ship a thin slice to the named first-three this week and watch what they do." Pre-build research is the right move when (a) the build is genuinely large, (b) a load-bearing assumption is binary and a five-minute conversation could kill the project, or (c) the named first-three aren't real yet. Otherwise: build.
+
+**Why it matters:** Discovery work feels productive but doesn't produce a product. With an AI team, the cost of building a working slice has collapsed — discovery rituals calibrated for 6-month builds become roadblocks at 2-week builds. The fastest path to truth is usage, not survey data.
 
 → Adopt as-is, edit, or drop?
 

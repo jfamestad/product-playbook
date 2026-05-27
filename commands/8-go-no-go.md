@@ -110,9 +110,10 @@ In a solo-builder context, this is almost always the user themself. Capture it a
 Before engineering starts, lock these commitments. They're cheap to set now and brutal to negotiate mid-build.
 
 - **Time budget:** date we ship by, or weeks of effort budgeted. Pulls from `mvp-scope.md` — confirm or revise.
+- **Time-to-first-user-touch:** target date for the first slice in a named first-three's hands — even if it's rough, internal-only, or behind a flag. Default aggressively: days, not weeks. With an AI team, "we're still building" past week 2 usually means the slice is too thick. If this date slips, that's a re-evaluation trigger.
 - **Money budget:** total $ at risk for the MVP build. Pulls from `mvp-scope.md` — confirm or revise.
 - **Scope-creep rule:** what's our policy when someone wants to add a feature mid-build? E.g., "any addition trades 1:1 with an IN item moving to OUT" or "no additions until pilot 1 ships."
-- **Re-evaluation triggers during build:** what events force us to revisit go/no-go before MVP ships? E.g., "if we're > N% over time budget at week M," "if cost-to-build estimate jumps > X%."
+- **Re-evaluation triggers during build:** what events force us to revisit go/no-go before MVP ships? E.g., "if we're > N% over time budget at week M," "if cost-to-build estimate jumps > X%," "if time-to-first-user-touch slips by more than a week."
 - **Kill triggers during build:** the lines we won't cross. E.g., "if integration with source Y proves impossible," "if first beta customer pulls out before week N."
 
 ## Step 7 — Write the artifact
@@ -146,6 +147,7 @@ The MVP-scope stress test surfaced N critical flaws and M load-bearing assumptio
 
 ## Pre-build commitments
 - **Time budget:** <date or weeks>
+- **Time-to-first-user-touch:** <date — first slice into a named user's hands, even rough>
 - **Money budget:** $<total>
 - **Scope-creep rule:** <policy>
 - **Re-evaluation triggers during build:** <list>

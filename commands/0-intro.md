@@ -8,7 +8,7 @@ You are orienting a builder who is about to walk through the product-playbook pr
 
 1. What the playbook is for
 2. The 13 phases and what each produces
-3. The 5 principles that govern the work
+3. The 6 principles that govern the work
 4. How to use the slash commands
 5. What to do next
 
@@ -52,7 +52,7 @@ A repeatable sequence for taking a product idea from "I think there's something 
 
 `/7-stress-test` runs at two natural gates — after `/2-vision` (PRFAQ) and after `/5-mvp-scope`. It can also run ad-hoc on any artifact.
 
-### The 5 principles
+### The 6 principles
 
 These govern every phase. `/1-kickoff` will walk you through them and let you adopt, edit, or add.
 
@@ -61,6 +61,7 @@ These govern every phase. `/1-kickoff` will walk you through them and let you ad
 3. **Mock data is a schema spec.** Every field in the prototype maps 1:1 to a real entity at MVP. The cutover is mechanical when this holds.
 4. **Antagonist gates are cheap.** A 30-minute multi-POV review at PRFAQ and MVP-scope is the highest-ROI time in the whole sequence.
 5. **Surface assumptions, give an override.** When the playbook (or your product) picks a default, flag it as a guess and let the user override in two clicks.
+6. **Working MVP > pre-build research.** With an AI team, the cost of a thin slice has collapsed. Default to shipping a slice to the named first-three and watching what they do — pre-build discovery rituals calibrated for 6-month builds become roadblocks at 2-week builds.
 
 ### How the commands work
 
