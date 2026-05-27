@@ -1,0 +1,14 @@
+{
+  "name": "product-playbook",
+  "owner": {
+    "name": "Josh Famestad",
+    "email": "jfamestad@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "product-playbook",
+      "source": "./",
+      "description": "13-phase product playbook for solo builders and small teams — idea to buildable backlog — with an explicit go/no-go gate and optional toolchain push via vendor MCPs."
+    }
+  ]
+}
